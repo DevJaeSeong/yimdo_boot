@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta name="_csrf" th:content="${_csrf.token}">
+	<meta th:replace="~{/common/head :: commonMeta}">
+	<title th:replace="~{/common/head :: adminTitle}"></title>
+	<link th:replace="~{/common/head :: icon}">
+	
+	<link rel="stylesheet" th:href="@{/css/admin/css/reset.css}">
+	<link rel="stylesheet" th:href="@{/css/admin/css/common.css}">
+	<link rel="stylesheet" th:href="@{/css/admin/css/content.css}">
+	<link rel="stylesheet" th:href="@{/css/admin/css/fonts.css}">
+	<link rel="stylesheet" th:href="@{/css/admin/css/jquery-ui.css}">
+	
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+</head>
+<body class="admin_company">
+	<div class="wrap">
+	
+		<div th:replace="~{/common/header :: adminHeader}"></div>
+		
+	    <!-- S : admi_section -->              
+		<div class="admi_section">
+		    <!-- S : sec_container -->              
+			<div class="sec_container">    
+		
+		        <!-- S : side_content -->              
+				<div class="side_content" tabindex="-1">
+		            <!-- S : content_doc -->              
+		            <div class="content_doc">
+		
+		                <div class="Dashbd">
+		                    <ul class="main_desk_area col-3">
+		                        <li>
+		                            <div class="unit">
+		                            <span class="sTit">차단기상태현황</span>
+		                            <span class="link_tab"><a href="/admin/breakerStatus/breakerStatusPage.do" class="btn_a_help_desk" title="바로기가"><span>바로가기</span></a></span>
+		                            </div>
+		                        </li>
+		                        <li>
+		                            <div class="unit">
+		                            <span class="sTit">차단기관리이력</span>
+		                            <span class="link_tab"><a href="/admin/managementHistory/breakerHistoryPage.do" class="btn_a_help_desk" title="바로기가"><span>바로가기</span></a></span>
+		                            </div>
+		                        </li>
+		                        <li>
+		                            <div class="unit">
+		                            <span class="sTit">임도출입이력</span>
+		                            <span class="link_tab"><a href="/admin/imdoAccessHistory/imdoAccessHistoryPage.do" class="btn_a_help_desk" title="바로기가"><span>바로가기</span></a></span>
+		                            </div>
+		                        </li>
+		                        <li class="mt15"> 
+		                            <div class="unit">
+		                            <span class="sTit">출입제한 관리정책</span>
+		                            <span class="link_tab"><a href="/admin/elementList/elementListPage.do" class="btn_a_help_desk" title="바로기가"><span>바로가기</span></a></span>
+		                            </div>
+		                        </li>
+		                        <li class="mt15">
+		                            <div class="unit">
+		                            <span class="sTit">출입제한 인자관리</span>
+		                            <span class="link_tab"><a href="/admin/elementInfo/elementInfoPage.do" class="btn_a_help_desk" title="바로기가"><span>바로가기</span></a></span>
+		                            </div>
+		                        </li>
+		                        <li class="mt15">
+		                            <div class="unit">
+		                            <span class="sTit">기상관측기 기상정보</span>
+		                            <span class="link_tab"><a href="/admin/weatherData/weatherDataPage.do" class="btn_a_help_desk" title="바로기가"><span>바로가기</span></a></span>
+		                            </div>
+		                        </li>
+		                    </ul>
+		                </div>
+		
+		            </div>
+		            <!-- E : content_doc -->              
+		        </div>
+		        <!-- E : side_content -->              
+		
+		    </div>
+		    <!-- E : sec_container -->              
+		</div>
+		<!-- E : admi_section --> 
+		
+	    <div th:replace="~{/common/footer :: adminFooter}"></div>
+		<div th:replace="~{/common/loading :: loading}"></div>
+	</div>
+</body>
+</html>

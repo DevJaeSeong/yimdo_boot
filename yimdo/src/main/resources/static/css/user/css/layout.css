@@ -1,0 +1,148 @@
+@charset "utf-8";
+
+/************************************************************************
+ * 프로젝트   : 스마트 임도 차단기 개발
+ * 파일명     : layout.css
+ * 설명       : 공통
+ * 작성일     : 2023.02.15
+ * 작성자     : jsj 
+ * 버   전    : 0.1
+************************************************************************/
+
+/* 20230215 로그인 화면 시작 */
+/* 왼쪽 시작 */
+.log_sec {min-width: 1200px; width: 100%; height: 100vh; background-image: url(../images/common_bg.png); background-position: center; background-repeat: no-repeat; background-size: cover; }
+.log_sec article{width: 1200px; height: 100%; margin: 0 auto;}
+.log_inner01, .log_inner02 {width: calc(50% - 2px); margin-top: 280px; float: left;}
+.main_title {font-size: 55px; font-weight: 600;}
+.main_title span:nth-of-type(1) {color: #f0a04b;}
+.main_title span:nth-of-type(2) {color: #285430;}
+.main_title span:nth-of-type(3) {color: #060047;}
+.sub_title {font-size: 25px; font-weight: 500; line-height: 30px;}
+.title_txt {font-size: 18px; font-weight: 400; line-height: 23px;}
+.log_sub_txt {font-size: 18px; font-weight: 500; color: #205e61;}
+/* 왼쪽 끝 */
+
+/* 오른쪽 시작 */
+.log_inner02 {text-align: center; margin-top: 240px;}
+.log_box {background-color: #fff; width: 77%; margin: 0 auto; padding: 50px 0; box-shadow: 2px 3px 3px 3px rgba(126, 126, 126, 0.2);}
+.log_wel {font-size: 32px;}
+.info_box {text-align: left; width: 85%; margin: 0 auto;}
+.info_box li {position: relative;}
+.info_box_title {font-size: 20px;} 
+.info_box input {width: 100%; height: 50px; border: unset; background-color: #f1f1f1;}
+.log_btn {width: 200px; height: 50px; background-color: #5a5a5a; color: #fff; font-size: 20px; transition: 0.3s;}
+.log_btn:hover {background-color: #313131;}
+.m_log_sub_txt {font-size: 15px; font-weight: 500; color: #205e61; display: none;}
+/* 오른쪽 끝 */
+
+@media all and (max-width:1100px) {
+    .wrap {overflow-x: hidden;}
+    .log_sec {padding: 10px; min-width: unset; width: calc(100% - 20px); height: auto; min-height: calc(100vh - 20px); display: flex; justify-content: center; align-items: center;}
+    .log_sec article {width: 100%;}  
+    .log_inner01, .log_inner02 {width: 100%; margin-top: unset; float: unset; vertical-align: top;}
+    .main_title {font-size: 30px; text-align: center; margin-bottom: 20px !important;}
+    .sub_title {text-align: center; font-size: 18px; line-height: 25px;}
+    .title_txt, .log_sub_txt {display: none;}
+    .log_box {padding: 30px 0;}
+    .log_wel {display: none;}
+    .log_btn {margin-top: 30px !important;}
+    .info_box_title {font-size: 16px;}
+    .info_box input {height: 40px;}
+    .m_log_sub_txt {display: block; margin-top: 15px;}
+}
+
+/* 20230215 로그인 화면 끝 */
+
+/* 20230223 사용자 출입신청 바로가기 시작 */
+.yim_direct {width: 100%; height: 100vh; background-image: url(../images/common_bg.png); background-position: center; background-repeat: no-repeat; background-size: cover;}
+.yim_direct_inner {max-width: 1200px; height: 100%; display: flex; justify-content: center; align-items: center; margin: 0 auto;}
+.yim_direct_con {width: 50%; text-align: center;}
+.yim_direct_txt01 {color: #205e61; font-size: 18px; font-weight: 500;}
+.yim_direct_txt02 {color: #4f4f4f; font-size: 45px; font-weight: 500;}
+.customer_name {color: #f0a04b; font-size: 55px; font-weight: 600;}
+.yim_direct_txt03 {color: #4f4f4f; font-size: 18px; line-height: 24px;}
+.direct_btn {display: inline-block; width: calc(50% - 20px); padding: 40px 0; line-height: 60px; font-size: 40px; color: #fff; font-weight: 500; background: #060047; border-radius: 30px; background: linear-gradient(300deg, #2795b5 0%, #4d73c7 25%, #3557a2 51%, #2795b5 100%); background-position: 1% 50%; background-size: 200% auto; transition: all 0.3s ease-out;}
+.direct_btn:hover {background-position: 99% 50%;}
+.direct_arrow {position: relative;}
+.direct_arrow::after {content: ''; width: 30px; height: 30px; position: absolute; top: 50%; right: -40px; transform: translateY(-50%); background: url(../images/direct_arrow.png) no-repeat; background-size: 100%; background-position: 1% 50%;}
+
+@media all and (max-width:1100px) {
+    .yim_direct {min-height: 100vh; height: auto; }
+    .yim_direct_inner {padding: 10px 0; min-height: calc(100vh - 20px);}
+    .direct_btn {font-size: 1.65em!important;}
+    .direct_btn:nth-of-type(2) {margin-top: 10px;}
+}
+
+@media all and (max-width:850px) {
+    .yim_direct_con {width: 70%;}
+    .direct_btn {font-size: 1.3em; line-height: 30px; padding: 30px;}
+    .direct_arrow::after {width: 20px; height: 20px; right: -25px;}
+}
+
+@media all and (max-width:500px) {
+    .yim_direct {min-height: 100vh;}
+    .yim_direct_con {width: 90%;}
+    .yim_direct_txt03 {font-size: 0.95em; width: 100%;}
+    .direct_btn {font-size: 1.3em; width: 80%;}
+    .direct_arrow::after {width: 20px; height: 20px; right: -25px;}
+}
+/* 20230223 사용자 출입신청 바로가기 끝 */
+
+/*  20230223 임도 출입신청서 작성 시작 */
+.yim_form {width: 100%; height: 100vh; background-image: url(../images/common_bg.png); background-position: center; background-repeat: no-repeat; background-size: cover;}
+.yim_form_inner {width: 100%; max-width: 1200px; height: 100%; margin: 0 auto; display: flex; justify-content: center; align-items: center;}
+.yim_form_con {width: 100%; text-align: center; }
+.yim_form_title {font-size: 40px; font-weight: 600;}
+.yim_form_sub_title {font-size: 22px; font-weight: 600; text-align: left; padding-left: 10px; position: relative;}
+.yim_form_sub_title::after {content: ''; position: absolute; top: 0; left: 0; width: 5px; height: 22px; background-color: #3572db;}
+.yim_form .table_typA {padding: 20px; background-color: #f1f6ff;}
+.ToS a {display: inline-block; font-size: 15px; color: #4f4f4f;}
+.ToS a:hover {text-decoration: underline;}
+.respon_box {display: flex; justify-content: center; align-items: center; width: 100%;}
+.respon_box>div {width: 100%;}
+
+@media all and (max-width:1250px) {
+    .yim_form {padding: 10px; height: auto; min-height: 100vh;}
+}
+@media all and (max-width:1000px) {
+    .contTbl tr td:before {height: 100%; min-height: 65px; color: #333; background-color: #fafafa; border-right: 1px solid #cccccc; display: flex; margin-right: 12px; flex: 0 0 100px; font-weight: 500; content: attr(data-label); white-space: wrap;}
+    .respon_box {flex-direction: column; width: 100%;}
+    .respon_box>div {width: 100%;}
+    .respon_box>div:nth-of-type(2) > * {margin-left: unset !important;}
+    .direct_btn {margin-right: unset !important;}
+}
+@media all and (max-width:700px) {
+    .yim_form {height: auto; min-height: 100vh;}
+    .yim_form_title {font-size: 20px; font-weight: 600; margin: 20px 0 !important;}
+    .yim_form_sub_title::after {height: 20px;}
+    .yim_form_sub_title {font-size: 18px;}
+    .yim_form_con {height: calc(100% - 20px);}
+    .yim_form .table_typA {padding: 10px;}
+    .yim_form .table_typA td > * {margin-right: 10px;}
+    .contTbl tr td:before {height: 100%; min-height: 65px; color: #333; background-color: #fafafa; border-right: 1px solid #cccccc; display: flex; margin-right: 12px; flex: 0 0 100px; font-weight: 500; content: attr(data-label); white-space: wrap;}
+    .respon_box {flex-direction: column; width: 100%;}
+    .respon_box>div {width: 100%;}
+    .respon_box>div:nth-of-type(2) > * {margin-left: unset !important;}
+    .ToS a {font-size: 15px;}
+}
+/*  20230223 임도 출입신청서 작성 끝 */
+
+/* 20230309 로그아웃 버튼 시작 */
+.logout_box {position: fixed; bottom: 100PX; left: 50%; transform: translateX(-50%); width: 30%; height: 50px; text-align: center; line-height: 50px;}
+.logout_box .logout_btn {width: 100%; height: 100%; background-color: #505050;}
+.logout_box .logout_btn:hover {background-color: #303030;}
+.logout_box .logout_btn span {font-size: 24px; color: #fff; font-weight: 500;}
+
+@media all and (max-width:1200px) {
+    .logout_box {position: static; transform: unset; width: 100%; margin: 50px auto 0 auto;}
+    .logout_box .logout_btn {width: 30%;}
+    .logout_box .logout_btn span {font-size: 18px;}
+}
+/* 20230309 로그아웃 버튼 끝 */
+
+
+
+/* 20230322 임도개방버튼 시작_김소연 */
+.gr_c_orange { background: linear-gradient(300deg, #ec9633 0%, #eb6619 25%, #f53e07 51%, #e79e5a 100%); background-position: 1% 50%; background-size: 200% auto; transition: all 0.3s ease-out;}
+/* 20230322 임도개방버튼 끝_김소연 */

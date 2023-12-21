@@ -1,0 +1,882 @@
+@charset "utf-8";
+
+@charset "utf-8";
+
+.wrap {display: inline-block; width: 100%; min-width: 1400px; height: auto;  }
+/* ============================================= sub_common 시작 ============================================= */
+
+.locationWrap { display: inline-block; width: 100%; height: 46px;  background: #f4f4f4; border-top: 1px solid #dedede; border-bottom: 1px solid #dedede;}
+.locationWrap>* {font-family: 'SC';}
+.locationWrap .page_nav {position: relative; width: 1400px; height: 46px; margin: 0 auto; border-left: 1px solid #dfdfdf;}
+.locationWrap li { margin-left: 0; float: none; }
+.locationWrap .page_nav li { float: left; position: relative; border-right: 1px solid #dfdfdf;}
+.locationWrap .page_nav li.first,
+.locationWrap .page_nav li:last-child { background: none;}
+.locationWrap .page_nav .home {float: left;display: block;}
+.locationWrap .page_nav .home a { display: block; width: 50px; height: 45px; text-indent: -9999em;background: url(../images/sub-page/location_home_img.png) no-repeat 50% 50%; }
+.locationWrap .page_nav li .depth_Titx {float: left; position: relative; min-width: 240px; }
+.locationWrap .page_nav li .depth_Titx a { display: block; color: #000; font-size: 15px; font-weight: 400; padding: 16px 80px 16px 20px; }
+.locationWrap .page_nav li .depth_Titx.on_clack a { color: #183471; font-weight: bold; }
+.locationWrap .page_nav li .depth_Titx:after { right: 0; }
+.locationWrap .page_nav li:nth-of-type(3) .depth_Titx:after {content: ''; display: block;position: absolute; right: 10px; top: 20px; width: 11px; height: 6px; background: url(../images/sub-page/btn_locationarr_all_img.png) 0px 0px no-repeat;}
+.locationWrap .page_nav li:nth-of-type(4) .depth_Titx:after {content: ''; display: block;position: absolute; right: 10px; top: 20px; width: 11px; height: 6px; background: url(../images/sub-page/btn_locationarr_all_img.png) 0px 0px no-repeat;}
+.locationWrap .page_nav li .depth_sub { display: none; position: absolute; top: 46px; left: -1px; border: 1px solid #dfdfdf; border-top: 0; background-color: #fff;z-index: 3; }
+.locationWrap .page_nav li .depth_sub a { display: block; color: #000; font-size: 14px; line-height: 18px; font-family: 'SC'; font-weight: 400; padding: 8px 10px; }
+.locationWrap .page_nav li .depth_sub li {display: block; width: 100%; margin: 1px 0;}
+.locationWrap .page_nav li .depth_sub li.sub_active a { color: #183471; font-weight: bold;}
+.locationWrap .page_nav li .depth_sub li a:hover,
+.locationWrap .page_nav li .depth_sub li a:focus {background-color: #ebf3ff; color: #183471; font-weight: bold; text-decoration: underline}
+
+/* ---------- sub_common_img 시작----------*/
+.sub_main_img {display: inline-block; width: 100%;   height: 150px; background-image: url(../images/sub-page/sub_page01-bg.png); background-repeat: no-repeat;background-size: cover;}
+.sub_main_img_inner {width: 1400px; overflow: hidden; margin: 0 auto; padding-top: 38px;}
+.sub_main_img_inner>h2 {font-family: 'SC'; font-weight: 600; font-size: 34px; color: #111d62; margin-top: 0px;}
+.sub_main_img_inner>p {font-family: 'SC'; font-weight: 500; font-size: 14px; color: #2b4180; margin-top: 20px; line-height: 1.2em;}
+.sub_title_txt {position: relative;}
+.sub_title_sub_txt01 {position: absolute; top: -12px; left: 60px; font-size: 12px;}
+.sub_title_sub_txt02 {position: absolute; top: -12px; left: 160px; font-size: 20px;}
+/* ---------- sub_common_img 끝----------*/
+
+/* 서브 공통 메뉴얼 버튼 */
+.common .tab_box {width: 100%; height: 67px !important; margin-top: 20px; border-bottom: 3px solid #4251ae;}
+.common .manual_btn {display: inline-block; width: 100px; height: 25px; color: #ffffff; font-size: 15px; line-height: 25px; margin-top: 20px; text-align: center; border-radius: unset; background-color: #666666 !important;
+    transition: 0.3s; float: right; margin-left: 10px;}
+.common .manual_btn:hover { background-color: #4251ae !important;}
+
+/* 서브 기본 버튼 */
+.defalut_btn {text-align: center; display: inline-block; width: 100px; height: 25px; line-height: 25px; background-color: #666666; color: #fff; font-size: 15px; transition: 0.3s; padding: 5px 10px; border-radius: unset;;}
+.defalut_btn:hover {background-color: #4251ae; color: #fff;}
+
+
+/* 서브 공통 2탭 */
+.common .tab_box .tap_nav {height: 100%; float: left; }
+.common .tab_box .tap_nav li{width: 207px; height: 100%;}
+.common .tab_box .tap_nav li a{width: 100%; height: 100%; display: inline-block; line-height: 4em; text-align: center; font-size: 18px; background-color: #eaeaea; color: #666666;}
+.common .tab_box .tap_nav li.on {border: 3px solid #4251ae; border-bottom: none; background-color: #ffffff; color: #000; height: 100%;}
+.common .tab_box .tap_nav li.on a {background-color: #ffffff; color: #000; font-size: 18px; font-weight: 500;}
+
+/* 서브 공통 3탭 */
+.common .box_tab { width: 100% !important; height: 67px; border-bottom: 3px solid #4251ae; margin-top: 20px;}
+.common .box_tab li {width: 207px; height: 100%; background-color: #eaeaea; color: #666666;}
+.common .box_tab li.on {border: 3px solid #4251ae; border-bottom: none; background-color: #ffffff;}
+.common .box_tab li a {display: inline-block; width: 100% !important; height: 100% !important; color: #666666; font-family: 'SC'; font-weight: 400; font-size: 18px; text-align: center; line-height: 4em;}
+.common .box_tab li.on a {color: #000; font-weight: 500;}
+.common .box_tab2 li {background-color: #eaeaea; border-bottom: unset !important;}
+.common .box_tab2 li a.on {background:#fff; color:#3d538c;}
+
+
+/* 서브 공통 검색창 */
+.common .tabin-search {width: 100%; height: 100% !important; display: inline-block;}
+.common .tabin-search .top-search {border: 3px solid #cccccc; float: left; border-radius: unset; width: 79%; height: 40px;}
+.common .tabin-search .top-search-btn {border-radius: unset; width: 40px; height: 40px; background-color: #4251ae; margin-left: 5px; float: left;}
+.common .tabin-search .top-search-btn img {width: 50%px; height: 50%;}
+.common .tabin-search .btn-sm { background-color: #666666; border-radius: unset; width: 100px; height: 40px; margin-left: 5px; float: left; transition: 0.3s;}
+.common .tabin-search .btn-sm:hover {background-color: #4251ae;}
+.common .tabin-search .btn-sm span {font-family: 'SC'; font-size: 16px; color: #ffffff;}
+.common .tabin-search .top-search::placeholder { color: #666666; font-family: 'SC'; font-size: 14px;}
+
+.sub_sel {height: 40px; border: 3px solid #cccccc !important; background-color: #fff; }
+
+/* 서브 공통 결과보기 버튼 */
+.common .btn_group {display: inline-block; width: 100%; text-align: right; padding: 0; margin-top: 20px; margin-bottom: 10px;}
+.common .btn_group>.btn01 {text-align: center; width: 140px; height: 37px; border-radius: unset; background-color: #666666 !important; transition: 0.3s; text-align: center;
+    background-image: url(../images/sub-page/search_icon.png); background-repeat: no-repeat; background-size: 20px; background-position: 20px 8px; color: #fff !important;}
+.common .btn_group>.btn01:hover {background-color: #4251ae !important;}
+.common .btn_group>.btn01 span {font-family: 'SC'; font-weight: 400; font-size: 15px; margin-left: 20px;}
+
+/* 서브 공통 결과보기 이미지 없는ver 버튼 */
+.common .btn_group .btn02 {text-align: center; color: #fff; text-align: center; width: 120px; height: 40px; border-radius: unset; background-color: #666666; transition: 0.3s;}
+.common .btn_group .btn02:hover {background-color: #4251ae;}
+.common .btn_group .btn02 span {font-family: 'SC'; font-weight: 400; font-size: 15px; color: #fff;}
+
+
+/* 서브공통 작은 버튼 */
+.common .day_change button {width: 100px; height: 30px; background-color: #666666; color: #ffffff; border-radius: unset; font-family: 'SC'; font-weight: 400; font-size: 14px; transition: 0.3s;}
+.common .day_change button:hover {background-color: #4251ae;}
+
+/* 서브 추가 삭제 버튼 */
+.small_btn {display: inline-block; float: right;}
+.small_btn a { display: inline-block; width: 50px !important;  border-radius: unset; padding: 4px;}
+.small_btn a span {display: inline-block !important; width: 15px; height: 15px; float: left; margin-top: 1px; line-height: 0;}
+.small_btn a span img {width: 100%; height: 100%;}
+
+/* 20221120 버튼03 */
+.btn03_box {display: inline-block;}
+.btn03 {width: 100px; height: 30px; display: inline-block; text-align: center; line-height: 30px; background-color: #666666; cursor: pointer; transition: 0.3s;}
+.btn03 a {color: #fff;}
+.btn03:hover {background-color: #4251ae;}
+
+/* 20221129 수정버튼추가 */
+.repair_btn {border: 2px solid #FD841F; background-color: unset !important; height: 37px !important; line-height: 14px;}
+.repair_btn span {color: #FD841F !important; font-weight: 500 !important;}
+.repair_btn:hover {background-color: #FD841F !important; }
+.repair_btn:hover span { color: #fff !important;}
+
+/* 20221129 등록버튼추가 */
+.update_btn {color: #666666; border: 2px solid #666666 !important; background-color: unset !important; font-weight: 500; transition: 0.3s;}
+.update_btn span {color: #666666 !important; font-weight: 500 !important;}
+.update_btn:hover {background-color: #4251ae !important; border-color: #4251ae !important;}
+.update_btn:hover span { color: #fff !important;}
+
+/* 20221205 엑셀다운로드 */
+/* 엑셀 다운로드 */
+.excel_btn {width: 160px; height: 40px; background-color: #fff; font-size: 14px; font-weight: 500; border: 2px solid #1C6758; color: #1C6758; transition: 0.3s;}
+.excel_btn:hover {background-color: #1C6758; color: #fff;}
+/* ============================================= sub_common 끝 ============================================= */
+
+/* ============================================ sub_main 시작 =============================================  */
+.mapChart { width: 100%;   height: auto; display: inline-block; overflow: hidden; }
+.wrap>* { font-family: 'SC';}
+.page-contents { width: 1400px; margin: 0 auto; height: auto;}
+.page-contents-inner { display: inline-block; width: 100%; height: 100% !important;}
+.sub_title { height: 90px;border-bottom: 1px solid #cccccc; }
+.sub_title04_2 { display: inline-block; font-weight: 500; font-size: 30px; color: #000; margin-top: 30px; position: relative;}
+.contents {width: 100%;  display: inline-block; margin-top: 20px;}
+/* ==================== 지역별현황분석 시작 ==================== */
+/*========== 지역별 산업통계 상단 시작 ==========*/
+/* ----- map 시작 ----- */
+.mapChart .mapChart_chart { position: relative; width: calc(40% - 10px); height: 875px; margin-right: 10px; display: inline-block; float: left; }
+.mapChart .mapChart_chart .chart-area2 { width: 100%; height: 100%; display: inline-block; background-color: #f2fdff; position: relative;}
+/* ----- map 끝 ----- */
+
+/*----- right 차트 시작 ----- */
+.mapChart .mapChart_menu { width: calc(60% - 10px) ; height: 100%; float: right; margin-left: 10px; position: relative;}
+.mapChart .mapChart_menu .chart_title { width: 830px; height: 62px; display: inline-block; border-bottom: 3px solid #4251ae;}
+.mapChart .mapChart_menu .chart_title>ul { width: 90%; height: 100%; display: inline-block; float: left; position: relative;}
+.mapChart .mapChart_menu .chart_title>ul>li {float: left; width: 205px; height: 100%; position: relative; z-index: 10; border-bottom: 3px solid #4251ae; background-color: #eaeaea;}
+.mapChart .mapChart_menu .chart_title>ul>li>a { display: inline-block; width: 100%; height: 100%;  font-family: 'SC'; font-size: 18PX; font-weight: 400; color: #666666; line-height: 61px ; text-align: center;}
+.mapChart .mapChart_menu .chart_title>ul>li.on { border: 3px solid #4251ae; border-bottom: none; height: 100%;background-color: #ffffff; color: #000;}
+.mapChart .mapChart_menu .chart_title>ul>li.on>a { font-weight: 500; color: #000;}
+.mapChart .mapChart_menu .chart_title>ul>li:nth-of-type(2) .sub3_chart { left: -210px;}
+.mapChart .mapChart_menu .chart_title>ul>li:nth-of-type(3) .sub3_chart {left: -415px;}
+
+.mapChart .mapChart_menu .data_get { display: inline-block; float: right; padding-top: 20px;}
+.mapChart .mapChart_menu .data_get>a {display: inline-block; width: 30px; height: 30px; position: relative;}
+.mapChart .mapChart_menu .data_get>a:first-child { background-image: url(../images/sub-page/download_icon.png); background-repeat: no-repeat; background-size: 100%; transition: 0.3s;}
+.mapChart .mapChart_menu .data_get>a:first-child:hover { background-image: url(../images/sub-page/download_icon_hover.png);}
+.mapChart .mapChart_menu .data_get>a:last-child { background-image: url(../images/sub-page/print_icon.png); background-repeat: no-repeat; background-size: 100%; transition: 0.3s;}
+.mapChart .mapChart_menu .data_get>a:last-child:hover { background-image: url(../images/sub-page/print_icon_hover.png);}
+
+.mapChart .mapChart_menu .chart_title>div:last-child>a:first-child {margin-right: 15px;}
+.mapChart .mapChart_menu .sub3_chart {border: 1px solid #ddd; padding: 10px; margin-top: 5px;  width: 810px; position: absolute; top: 100%; left: -5px; display: none;}
+.mapChart .mapChart_menu .sub3_chart.on { display: block;}
+.mapChart .mapChart_menu .sub3_chart>p:first-child { display: inline-block; float: right; margin-bottom: 5px;}
+.mapChart .mapChart_menu .sub3_chart>p:last-child { display: inline-block; width: 100%;}
+.mapChart .mapChart_menu .sub3_chart>p:last-child>span {margin-top: 5px;}
+.mapChart .mapChart_menu .sub3_chart>p:last-child>span:first-child {float: left;}
+.mapChart .mapChart_menu .sub3_chart>p:last-child>span:last-child {float: right;}
+.mapChart .mapChart_menu .sub3_chart table.bbs {width: 100%;}
+.mapChart .mapChart_menu .chart_title02 {margin-top: 30px; margin-bottom: 5px;display: block;}
+.mapChart .mapChart_menu .chart_title02>span:first-child {display: inline-block; text-align: left; font-size: 18px; font-weight: 600; color: #454545;}
+.mapChart .mapChart_menu .chart_title02>span:last-child {float: right; line-height: 2em; }
+.mapChart .mapChart_menu .ng-isolate-scope02 .highcharts-container { width: 100%; height: 100%;}
+.mapChart .mapChart_menu .ng-isolate-scope02 .highcharts-root { width: 100%; height: 100%; padding-left: 100px; }
+.mapChart .mapChart_menu .ng-isolate-scope03 {  margin-top: 26px; width: 100%; height: 400px; display: inline-block; border: 1px solid #ddd; }
+.mapChart .mapChart_menu .chart02 { height: 100%; width: 100%; display: inline-block; }
+.mapChart .mapChart_menu .chart02 .ng-isolate-scope { width: 100%; height: 100%;}
+/*----- right 차트 끝 ----- */
+/*========== 지역별 산업통계 상단 끝 ==========*/
+
+/* ========== 하단 탭메뉴 시작 ========== */
+.mapChart .sub_under { width: 100%; height: 650px; margin-bottom: 50px; display: inline-block; justify-content: space-between;}
+.mapChart .sub_under>div { width: calc(50% - 10px); height: 100%; }
+.sub_under_inner01 {float: left;}
+.sub_under_inner02 {float: right;}
+.mapChart .sub_under_inner01 h4, .sub_under_inner02 h4  { font-size: 17px; margin: 10px 0; background-image: unset !important;}
+/* ========== 하단 탭메뉴 끝 ========== */
+/* ================================================== 지역별현황분석 끝 ================================================== */
+
+/* ================================================== 지역별현황분석_veiw 시작 ================================================== */
+/*========== 지역별 산업통계 상단 시작 ==========*/
+/* ----- map 시작 ----- */
+/* 메인화면버튼 */
+.mapChart .return01 {position: absolute; top: 0; left: 0; display: inline-block; line-height: 40px; padding-left: 38px;  padding-right: 15px; height: 40px; z-index: 5; background-color: #666666; color: #ffffff; font-size: 18px; transition: 0.3s;}
+.mapChart .return01:hover {background-color: #4251ae;}
+.mapChart .return01>span { display: inline-block; position: relative;}
+.mapChart .return01>span::after { content: ''; position: absolute; top: 50%; left: -22px; transform: translateY(-50%);  width: 18px; height: 18px; background-image: url(../images/sub-page/return_icon.png); z-index: 100; background-repeat: no-repeat; background-size: 100%; background-position: center;}
+/* 메인화면버튼 끝 */
+
+.mapChart .f_l {position: relative; width: calc(40% - 10px); height: 100%;  margin-right: 10px; display: inline-block; float: left;}
+.mapChart .chart-area2 { width: 100%; height: 720px !important; display: inline-block; background-color: #f2fdff; position: relative;}
+.mapChart .tui-chart { width: 350px !important; height: 500px !important;}
+.mapChart .tui-chart>img { width: 100%; height: 100%;}
+.mapChart .chart-area2_inner { position: absolute; width: 450px; height: 450px; top: 102.4%; left: 15%; }
+.mapChart .chart-area2_inner>a { display: inline-block; width: 100%; height: 100%; position: relative;}
+.mapChart .chart-area2_inner>a::after { content: ''; position: absolute; top: -49px; left: 50%; transform: translateX(-50%); width: 50px;  height: 50px; background-image: url(../images/sub-page/map_tri-angle.png); background-repeat: no-repeat; background-size: 100%; background-position: center;}
+.mapChart .chart-area2_inner>a>img { width: 100%; height: 100%;}
+/* ----- map 끝 ----- */
+
+/*----- right 차트 시작 ----- */
+.mapChart .f_r { width: calc(60% - 10px); height: 100%; float: right; margin-left: 10px;}
+.mapChart .f_r .area_title { width: 100%; height: 67px; display: inline-block; }
+.mapChart .f_r .area_title>div:first-child {float: left; width: 205px; height: calc(100% - 5px); border: 3px solid #4251ae; border-bottom: none; text-align: center;}
+.mapChart .f_r .area_title>div>img { height: 80%; width: 80%; }
+.mapChart .f_r .data_get { display: inline-block; float: left; width: calc(100% - 215px); border-bottom: 3px solid #4251ae; padding-top: 12px;}
+.mapChart .f_r .data_get>a {float: right; display: inline-block; width: 30px; height: 30px; margin-bottom: 20px;}
+.mapChart .f_r .data_get>.print {background-image: url(../images/sub-page/download_icon.png); background-repeat: no-repeat;  background-position: center; background-size: 100%; transition: 0.3s; margin-right: 15px;}
+.mapChart .f_r .data_get>.print:hover { background-image: url(../images/sub-page/download_icon_hover.png);}
+.mapChart .f_r .data_get>.download {background-image: url(../images/sub-page/print_icon.png); background-repeat: no-repeat;background-position: center; background-size: 100%; transition: 0.3s; }
+.mapChart .f_r .data_get>.download:hover { background-image: url(../images/sub-page/print_icon_hover.png);}
+.mapChart .f_r .area_title>div:last-child>a:first-child { margin-right: 15px;}
+.mapChart .f_r .circle_gra { display: inline-block; width: 100%; margin-top: 35px; text-align: center;}
+.mapChart .f_r .circle_gra .ng-isolate-scope {float: left; margin: 0 28px;}
+.mapChart .f_r .ng-isolate-scope { width: 220px; height: 220px;}
+
+.mapChart .f_r .highcharts-container { position: relative; overflow: hidden; width: 220px; height: 220px; line-height: normal; z-index: 0; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);}
+.mapChart .f_r .year { display: inline-block; width: 100%;  text-align: right;  margin-top: 10px; }
+.mapChart .f_r .chart01 { border: 1px solid #ddd; padding: 10px;  margin-top: 5px; }
+.mapChart .f_r .chart_title02 {  margin-top: 30px; margin-bottom: 5px; display: block;}
+.mapChart .f_r .chart_title02>span:first-child { display: inline-block; text-align: left;font-size: 18px; font-weight: 600; color: #454545; }
+.mapChart .f_r .chart_title02>span:last-child { float: right; line-height: 2em; }
+.mapChart .f_r .ng-isolate-scope02 { width: 100%; height: 300px; float: left; border: 1px solid #ddd; display: inline-block; }
+.mapChart .f_r .ng-isolate-scope02 .highcharts-container {  width: 100%; height: 100%; }
+.mapChart .f_r .ng-isolate-scope02 .highcharts-root { width: 100%; height: 100%;}
+.mapChart .f_r .ng-isolate-scope03 { margin-top: 26px; width: 100%; height: 400px; display: inline-block; border: 1px solid #ddd; }
+.mapChart .f_r .chart02 { height: 100%; width: 100%; display: inline-block;}
+.mapChart .f_r .chart02 .ng-isolate-scope {  width: 100%; height: 100%; }
+.mapChart .f_r .chart02 .highcharts-container { width: 100%; display: inline-block; align-items: center; justify-content: center;}
+/*----- right 차트 끝 ----- */
+/*========== 지역별 산업통계 상단 끝 ==========*/
+
+/* ========== 하단 탭메뉴 시작 ========== */
+.mapChart .ktab-box2 { margin-top: 60px; width: 1400px; height: 1650px;  display: inline-block !important;}
+.mapChart .ktab-box2_inner { width: 100%; height: 65px;  border-bottom: 3px solid #4251ae; }
+.mapChart .ktab-step5 { width: calc(100% - 100px); height: 65px; display: inline-block; float: left; }
+.mapChart .ktab-step5>li {float: left; width: 250px; height: 100%; border-bottom: 3px solid #4251ae; background-color: #eaeaea; position: relative;}
+.mapChart .ktab-step5>li.on { border: 3px solid #4251ae; border-bottom: none; background-color: #ffffff;}
+.mapChart .ktab-step5>li>a { display: inline-block; text-align: center; line-height: 68px; width: 100%; height: 100%; font-size: 20px; font-weight: 400; color: #666666; }
+.mapChart .ktab-step5>li.on>a { display: inline-block; width: 100%; height: 100%; font-size: 20px; font-weight: 400; color: #000; font-weight:500;}
+.mapChart .get_icon { display: inline-block; float: right; width: 100px; margin-top: 20px;}
+.mapChart .get_icon>a { display: inline-block; width: 30px; height: 30px;}
+.mapChart .get_icon>a:first-child { margin-right: 15px; background-image: url(../images/sub-page/download_icon.png); background-position: center; background-repeat: no-repeat; background-size: 100%; transition: 0.3s;}
+.mapChart .get_icon>a:first-child:hover {background-image: url(../images/sub-page/download_icon_hover.png);}
+.mapChart .get_icon>a:last-child { background-image: url(../images/sub-page/print_icon.png); background-position: center; background-repeat: no-repeat; background-size: 100%; transition: 0.3s; }
+.mapChart .get_icon>a:last-child:hover { background-image: url(../images/sub-page/print_icon_hover.png); }
+.mapChart .m_contents02 { position: absolute; top: 100%; left: -5px; display: none;}
+.mapChart .m_contents02.on {display: inline-block;}
+.mapChart .ktab-step5>li:nth-of-type(2) .m_contents02 { left: -255px;} 
+.mapChart .ktab-step5>li:nth-of-type(3) .m_contents02 { left: -505px;}
+.mapChart .m_contents02>div { width: 1400px; padding: 35px 0;}
+.mapChart .bottom_chatt01 {display: inline-block;width: calc(50% - 10px); height: 490px; float: left;}
+.mapChart .bottom_chatt01>h4 { font-size: 17px; padding: 20px 0 }
+.mapChart .bottom_chatt01 .ng-isolate-scope { width: 100% !important; height: calc(100% - 57px) !important; display: inline-block;}
+.mapChart .bottom_chatt02 { display: inline-block; width: calc(50% - 10px); height: 490px; float: right; }
+.mapChart .bottom_chatt02>h4 { font-size: 17px; padding: 20px 0;}
+.mapChart .bottom_chatt02 .ng-isolate-scope { width: 100% !important; height: calc(100% - 57px); display: inline-block;}
+.mapChart .bottom_chatt03 { margin-top: 45px; width: 100% ; height: 490px; display: inline-block;}
+.mapChart .bottom_chatt03>h4 { font-size: 17px; display: inline-block; width: 100%; height: 35px; line-height: 35px;}
+.mapChart .bottom_chatt03>h4>a { display: inline-block; float: right; height: 100%; width: 125px; padding-top: 0px; text-align: center; background-color: #666666; color: #ffffff; font-weight: 400; line-height: 2em; transition: 0.3s;}
+.mapChart .bottom_chatt03>h4>a:hover {background-color: #4251ae;}
+.mapChart .bottom_chatt03 .ng-isolate-scope { margin-top: 20px; width: 100%; height: calc(100% - 57px) ; display: inline-block;}
+.mapChart .bottom_table { margin-top: 35px; width: 100%; display: inline-block;}
+.bottom_table>div { width: calc(100% - 20px); height: 345px; border: 1px solid #ddd; padding: 10px;}
+.mapChart .bottom_table>.board_date01 { border: 1px solid #ddd; width: 100%; padding: 10px; display: inline-block; }
+.mapChart .bottom_table_title { font-size: 17px;display: inline-block;  width: 100%; padding: 20px 0;}
+.mapChart h4 {background: unset !important;}
+.chart_title02 {background: unset !important;}
+.bottom_chatt01 h4, .bottom_chatt02 h4, .bottom_chatt03 h4, .bottom_table h4 {background: unset !important;}
+/* ================================================== 지역별현황분석_veiw 끝 ================================================== */
+
+/* ================================================== 시장규모분석 시작 ================================================== */
+/* ---------- 분류선택 시작 ---------- */
+.statisticAnal2 .box_contents {border-top:  none;}
+.statisticAnal2 .box_contents {padding: 0; margin: 10px 0;}
+.statisticAnal2 .box_contents>div {width: 33%; margin-bottom: 7px;}
+.statisticAnal2 .box_contents {width: 100%; display: inline-block;}
+.statisticAnal2 .box_contents_inner {display: inline-block; border: 1px solid #ddd ; width: calc(100% - 22PX) !important; margin: 0 ; padding: 10px;}
+.statisticAnal2 .board_date01 {width: 100% !important;}
+.statisticAnal2 .board_date01 td { background-color: #fff !important;}
+.statisticAnal2 .c_box th, .statisticAnal2 .c_box td {text-overflow: unset; overflow: unset ; white-space: unset;}
+.statisticAnal2 .box_tab2_outer {display: inline-block; width: 100%; border-bottom: 3px solid #eaeaea; margin-top: 20px;}
+.statisticAnal2 .box_tab2 {display: inline-block; float: left; height: 37px;}
+.statisticAnal2 .box_tab2 li {border: 3px solid #eaeaea;  width: 120px; height: 100%; background-color: #eaeaea;}
+.statisticAnal2 .box_tab2 li.on {border: 3px solid #eaeaea; border-bottom: none; background-color: #ffffff;}
+.statisticAnal2 .box_tab2 li a {display: inline-block; width: 100%; height: 100%; text-align: center; line-height: 2.5em; font-size: 15px;}
+.statisticAnal2 .box_tab2_title {margin-top: 20px; display: inline-block; width: 100%;}
+.statisticAnal2 .day_change {display: inline-block; float: right;}
+.statisticAnal2 .box_tab2_title {display: inline-block; width: 100%; margin-top: 10px}
+.statisticAnal2 .box_tab2_title span:first-child {font-weight: 500; font-size: 16px;}
+.statisticAnal2 .box_tab2_title span:last-child {float: right;}
+.statisticAnal2 .box_tab2_box01 {margin: 10px 0; display: inline-block;}
+.statisticAnal2 .box_tab2_box01_tip {margin: 5px 0;}
+.statisticAnal2  .box_tab2_box01 .board_date07:first-child  th{height: 40px !important;}
+.statisticAnal2 .box_tab2_chart {display: inline-block; width: 100%; position: relative; padding: 20px 0; margin-bottom: 50px;}
+.statisticAnal2 .box_tab2_chart .f_l { border: 1px solid #ddd; width: calc(50% - 5px) !important; float: left;}
+.statisticAnal2 .box_tab2_chart .f_l>div {display: inline-block; position: relative; overflow:hidden;}
+.statisticAnal2 .box_tab2_chart .f_r {border: 1px solid #ddd; width: calc(50% - 5px) !important; float: right;}
+.statisticAnal2 .box_tab2_chart .f_r>div {display: inline-block; position: relative; overflow:hidden;}
+.statisticAnal2 .box_tab2_chart .f_l>div .ng-isolate-scope, .statisticAnal2 .box_tab2_chart .f_r>div .ng-isolate-scope {width: 100%;}
+
+/* ---------- 분류선택 시작 ---------- */
+
+/* ---------- 검색 시작 ---------- */
+.statisticAnal2 .tab_box02 {display: inline-block; width: 55%; border-bottom: none ;}
+.statisticAnal2 .box_tab02 { width: 100%; height: 50px;}
+.statisticAnal2 .box_tab02 .tabin-search .top-search {width: 80.3%;}
+.statisticAnal2 .table_bg02 {display: inline-block; width: 100% !important; margin-top: 20px;}
+.statisticAnal2 .table_bg02_2 .b_top {display: inline-block; width: 55%; }
+.statisticAnal2 .table_bg02_2 .b_top>div { width: 100%;}
+.statisticAnal2 .table_bg02_2 .b_top>div .tab_outer { width: calc(100% - 22px); padding: 10px; border: 1px solid #ddd; height: 300px; overflow: hidden;}
+.statisticAnal2 .table_bg02_2 .b_top>div .tab_outer td:nth-of-type(1) {background-color: #ffffff; color: #444444;}
+/* .statisticAnal2 td {overflow: hidden; text-overflow: ellipsis; white-space: nowrap; background-color: #ffffff ; color: #444444 ;} */
+.statisticAnal2 .table_bg02_2 .b_top02 { margin-left: 10px; display: inline-block; width: calc(45% - 10px);  float:left; margin-top:-18px; }
+.statisticAnal2 .table_bg02_2 .b_top02 .title_name {width: 100%; display: inline-block; font-size:18px; color:#333; font-weight:400; background:#fff; }
+.statisticAnal2 .table_bg02_2 .b_top02 .box_content { margin-top: 10px;}
+.statisticAnal2 .table_bg02_2 .b_top02 .box_contents_inner {height: calc(100% - 20px); height: 300px; overflow: hidden}
+.statisticAnal2 .table_bg02_2 .b_top02 .box_contents_inner .board_date01 td {background-color: unset !important;}
+.statisticAnal2 .table_bg02_2 .b_top02 .btn_group {margin-top: 20px;}
+.statisticAnal2 .p_navi { width: 100%;}
+/* ---------- 검색 끝 ---------- */
+/* ================================================== 시장규모분석 끝 ================================================== */
+
+/* ================================================== 순현재가치분석 시작  ================================================== */
+.npv .menu_btn {display: inline-block; width: 100%;}
+.npv .menu_btn a {display: inline-block; width: 100px; height: 25px; line-height: 25px; color: #ffffff; font-size: 15px; margin-top: 15px; text-align: center; border-radius: unset; background-color: #666666 !important; transition: 0.3s;}
+.npv .menu_btn a:hover {background-color: #4251ae;}
+.npv .block-ui-main {margin-top: 20px;}
+.npv .block-ui-main>div { width: 100%;}
+.npv .tbl_type3 {width: 100%;}
+.npv .tbl_type3 th, .npv .tbl_type3 td {font-family: 'SC'; font-size: 14px; font-weight: 400; height: 40px;}
+.npv .tbl_type3 td > * {float: left;}
+.npv .tbl_type3 th { background-color: #666666; color: #ffffff; width: 10%;}
+.npv .tbl_type3 td { width: 30% ;}
+.npv .tbl_type3 .btn-xs {background-color: #666666; color: #fff; width: 80px; height: 30px; border-radius: unset !important; font-family: 'SC' ; font-weight: 400; font-size: 14px; transition: 0.3s; margin-left: 10px;}
+.npv .tbl_type3 .btn-xs:hover {background-color: #4251ae;}
+.npv .tbl_type3 td .form-control { height: 30px; width: 400px; border-radius: unset;}
+.npv .tbl_type3 td .selectbox {width: 100%;}
+.npv .tbl_type3 td .ra_set {margin-right: 20px;}
+.npv .tbl_type3 td .ra_set span {margin-left: 5px;}
+
+.npv .tbl_type4 { margin-top: 20px; width: 100%;}
+.npv .tbl_type4 th, .npv .tbl_type4 td { height: 30px; font-family: 'SC'; font-weight: 400; font-size: 14px; text-align: center; line-height: 1.5em;}
+.npv .tbl_type4 th {background-color: #666666; }
+.npv .tbl_type4 input {width: 100%; height: 30px; font-family: 'SC'; font-weight: 400; font-size: 14px;}
+.npv .tbl_type4 .selectbox {width: 100%; height: 30px; font-family: 'SC'; font-weight: 400; font-size: 14px;}
+.npv .tbl_type4 .selectbox option {text-align: center; font-family: 'SC'; font-weight: 400; font-size: 14px;}
+.npv .tbl_type4 tbody tr:nth-of-type(1) td {background-color: #f1f1f1; color: #666666;}
+.npv .tbl_type4 tbody .form-control {text-align: right;}
+.npv .btn02 {float: unset !important;}
+.npv .percent {text-align: center;}
+.npv .percent>div { display: inline-block;}
+.npv .percent label {width: 50%; line-height: 30px; margin-top: 4px; float: left;}
+.npv .percent input {width: calc(100% - 15px) !important; } 
+.npv .percent .btn_group {display: inline-block; width: unset; margin: 0 ; margin-left: 20px; float: left;}
+.npv .percent .btn_group button {background-image: url(../images/sub-page/return_icon.png) !important; background-size: 15PX; background-position: 20PX;}
+.npv .percent .btn_group button span {font-size: 14px;}
+.tbl_type4_info {border: 3px solid #4251ae; padding: 20px 0;}
+.tbl_type4_info p {font-size: 14px; margin-left: 10px; line-height: 1.5em;}
+.npv .tbl_type5 {width: 100%; margin-top: 20px;}
+.npv .tbl_type5 td {font-size: 15px ;}
+.npv .under_tip {margin-top: 10px;  margin-bottom: 30px;}
+.npv .select_day { display: inline-block; line-height: 2.1em; float: left; margin-top: 10px;}
+.npv .select_day > * {float: left;}
+.npv .select_day p { font-size: 18px;}
+.npv .select_day select {width: 100px; text-align: right; font-size: 16px; margin:0 5px;}
+/* ================================================== 순현재가치분석 끝  ================================================== */
+
+
+
+/*지식창고 20221117 추가*/
+.h2-inner{width: 1400px;}
+.market_bg06{width: 1400px; background: #354558; height: 0px;}
+ul.icon li{border: 1px solid #ccc; width:154px; height: 113px; padding-top: 0px; line-height: 113px; font-size: 14px;} 
+ul.icon li:hover {color:#3d538c}
+ul.icon li.btn01 {background: #fff !important; margin-left:0;}
+ul.icon li.btn01:hover, ul.icon li.btn01.active {background: #4251ae !important; color: #fff; }
+ul.icon li.btn02 { background: #fff !important;}
+ul.icon li.btn02:hover, ul.icon li.btn02.active { background: #4251ae !important; color: #fff;}
+ul.icon li.btn03 {background: #fff !important; margin-left:0}
+ul.icon li.btn03:hover, ul.icon li.btn03.active {background: #4251ae !important; color: #fff; }
+ul.icon li.btn04 {background: #fff !important; }
+ul.icon li.btn04:hover, ul.icon li.btn04.active {background: #4251ae !important; color: #fff; }
+ul.icon li.btn05 {background: #fff !important; margin-left:0}
+ul.icon li.btn05:hover, ul.icon li.btn05.active {background: #4251ae !important; color: #fff; }
+ul.icon li.btn06 {background: #fff !important;}
+ul.icon li.btn06:hover, ul.icon li.btn06.active {background: #4251ae !important; color: #fff; }
+ul.icon li.btn07 {background: #fff !important; margin-left:0}
+ul.icon li.btn07:hover, ul.icon li.btn07.active {background: #4251ae !important; color: #fff; }
+ul.icon li.btn08 {background: #fff !important;}
+ul.icon li.btn08:hover, ul.icon li.btn08.active {background: #4251ae !important; color: #fff; }
+.qick_btn{display: inline-block; width: 100px; height: 25px; color: #ffffff; font-size: 17px; border: 1px solid #fff; text-align: center; border-radius: unset; background:none !important; transition: 0.3s; line-height: 25px; top: 20px;}
+.qick_btn:hover{background:#4251ae  !important;  top: 20px;}
+ul.tab{width: 1400px;}
+ul.tab li a.active{color:#000 !important;}
+ul.tab li a{padding:0px;}
+
+/* 서브 공통 탭길이 조정 20221117 */
+
+span.num{top:29px; left: 224px; color: #222;}
+
+
+/* 환경분석-SWOT 20221118 추가 */
+.SWOT .tab_box {border-bottom: unset;}
+.SWOT .tab_box .manual_btn {margin-top: 5px;}
+.SWOT_tip {display: inline-block;  padding: 15px 0; width: 70%; margin-top: 5px;}
+.SWOT_tip span {position: relative; font-size: 14px; display: inline-block; margin-left: 25px;}
+.SWOT_tip span::before {content: ''; position: absolute; top: 50%; left: -25px; transform: translateY(-50%); width: 20px; height: 20px;
+    background-image: url(../images/sub-page/TIP_icon.png); background-repeat: no-repeat; background-size: 100%;}
+.SWOT .contentsbox {width: 100%;}
+.swot_box01 {width: 100% ;}
+.swot_box01 td {width: 50%;}
+.swot_box01 .box02_inner {width: calc(100% - 33px); padding: 20px 10px; border: 1px solid #ddd; margin-bottom: 20px;}
+.swot_input_ul a {display: inline-block; width: 25px; height: 25px;}
+.swot_input_ul a img {width: 100%; height: 100%;}
+.SWOT .btn_group a {margin-left: 10px;}
+
+.ripplelink {display:inline-block; width:calc(100% - 10px); height:100px; line-height:100px; text-align:center; color:#fff; font-size: 40px; font-weight: 600; transition: 0.3s;}
+.ripplelink:hover{ box-shadow:rgba(0, 0, 0, 0.3) 0 3px 3px 0; }
+.cyan{background:#44b8db;}
+.lightgreen{background:#7dc570;}
+.coral{background:#c6585a;}
+.orange{background:#fbb358;}
+
+.swot_input_ul .form-control {border: 2px solid; width: 80%; height: 35px !important;}
+.cyan00{border-color: #44b8db !important;}
+.lightgreen00{border-color: #7dc570 !important;}
+.coral00{border-color: #c6585a !important;}
+.orange00{border-color: #fbb358 !important;}
+.SWOT .popup4 .tabin-search02 {display: inline-block; height: unset !important; margin-bottom: 10px !important;}
+.SWOT .popup4 .tabin-search02 .top-search {width: 53.3%;}
+.SWOT .popup4 .scrollbox1 {float:left; width:600px; height:480px; border:1px solid #d1d1d1;}
+.SWOT .popup4 .scrollbox2 {float:right; width:560px; height:480px; border:1px solid #d1d1d1; overflow: scroll; overflow-x: hidden;}
+.SWOT .ot_list {border: 1px solid #ddd;}
+.SWOT .popup4 .scrollbox2 th {background-color: #666666 !important;}
+
+
+/* 20221121 제품별 기업현황 분석 */
+.companyAnal4 {width: 100%; display: inline-block;}
+.companyAnal4 h4 {background-size: 0 !important;}
+.companyAnal4_inner {display: inline-block; width: 100%; margin-bottom: 20px;}
+.market-competition {width: 100%; display: inline-block; margin-top: 10px;}
+.companyAnal4_inner li {display: inline-block; float: left; margin-right: 10px; }
+.companyAnal4_inner li:last-child {margin-right: unset;}
+.companyAnal4_inner .competition-head {width: 100%; height: 30px; background-color: #4251ae; text-align: center; color: #fff; line-height: 30px; font-size: 15px;}
+.companyAnal4_inner .competition-body {padding: 10px; border: 1px solid #ddd;}
+.companyAnal4_inner .five {width: 35%; display:  inline-block;}
+.companyAnal4_inner .five .competition-body {padding-bottom: 73px;}
+.companyAnal4_inner .tabin-search .top-search {width: 88%;}
+.five_tip {margin-top: 10px; padding-bottom: 10px; border-bottom: 1px dotted #ddd;}
+.companyAnal4_inner .product-list-box {display: inline-block; width: 100%; margin-top: 10px;}
+
+.companyAnal4_inner .one, .companyAnal4_inner .two {display: inline-block; width: 20%;}
+.companyAnal4_inner .one label, .companyAnal4_inner .two label {display: inline-block; width: 100%; padding: 5px 0; margin: 5px 0;}
+.companyAnal4_inner .one span,.companyAnal4_inner .two span {display: inline-block; margin-left: 10px; font-size: 14px;}
+.companyAnal4_inner .three {width: calc(25% - 30px); display: inline-block; float: left;}
+.three_inner {height: 105px;}
+.three_inner:last-child {margin-top: 10px;}
+.three_inner .competition-body {border: 1px solid #ddd; height: calc(100% - 50px) !important;}
+.three_inner .competition-body input {width: 70%; height: 30px;}
+.three_inner .competition-body span {font-size: 14px; display: inline-block;}
+.three_inner .competition-body span:first-child {display: inline-block; width: 100%; margin-bottom: 10px;}
+.three_inner .competition-body span:last-child {margin-left: 5px;}
+
+.companyAnal4 .m_contents {width: 100%; display:  inline-block; border: unset; padding: 0; text-align: center; margin-bottom: 40px;}
+.companyAnal4 .m_contents .effect01 { display: inline-block; margin-top: 20px !important;}
+.effect01_title {display: inline-block; width: 100%; height: 50px !important; text-align:center; font-size:19px;  background-color: #666666;}
+.effect01_title h4 {color: #fff !important; font-weight:400 !important; line-height: 40px;}
+.effect01_btn {text-align: center !important; float: unset !important; display: inline-block;}
+.effect01_btn .btn01 {display: inline-block; float: unset !important; background-position: 10px 8px !important;}
+.effect01_btn .defalut_btn {width: 140px; height: 37px; display: inline-block;}
+.effect01_2 {margin-top: 50px !important;}
+.effect01_2_count {display: inline-block; float: left; padding: 10px 0; margin-top: 15px;}
+.effect02_1>div h4 {width: calc(100% - 10px); display: inline-block; text-align: left; background-color: #666666; padding: 10px 0; padding-left: 10px; color: #fff; font-weight: 400;}
+.effect02_1 #chart1 { width: 100%; height:415px; float:left; border:1px solid #ddd;}
+.effect02_1 #chart2 { width: 100%; height:415px; float:right; border:1px solid #ddd;}
+.chart1_under {display: inline-block;width: 100%; text-align: right; margin-top: 5px;}
+.effect02 .chart_box01 {margin: 0px auto; width:calc(50% - 10px); height: 400px; float:left; position: relative;}
+.effect02 .chart_box02 {margin: 0px auto; width:calc(50% - 10px); float:right;}
+
+.effect02_2 {width: 100%; height: 550px; margin-top: 20px; position:relative;}
+.effect02_2>h4 {width: calc(100% - 10px); text-align: left; padding: 10px 0 10px 10px; background-color: #666666 !important; color: #fff; display: inline-block; font-weight: 400;}
+.effect02_2_inner {display: inline-block; margin: 0px auto; width:100%; height: calc(100% - 40px); float:left; position: relative;}
+.effect02_2_inner .f_l {border: 1px solid #ddd !important; width: calc(50% - 10px); height: 100%; float: left;}
+.effect02_2_inner .f_r {border: 1px solid #ddd !important; width: calc(50% - 10px); height: 100% !important; float: right;}
+.chart4 {display: inline-block; width:calc(50% - 10px); height: 100%;  float:right; border: 1px solid #ddd;}
+.chart-title01 {width: 100%; height: 30px; display: inline-block; font-size: 14px; text-align: center;margin-top: 10px;}
+.chart-title01 p {display: inline-block; width: calc(90% - 30px); margin-left: 20px; line-height: 30px; font-size: 17px !important; font-weight: 500;  float: left; height: 100%; }
+.chart-title01 .defalut_btn {float: right; width: 10%; display: inline-block; height: 100%; line-height: 10px; margin-right: 10px;}
+.effect02_3 {width: 100%; margin-top: 30px;}
+.effect02_3_txt {text-align: left; margin: 10px 0;}
+.top10_txt {margin: 10px 0; text-align: left; font-size: 14px;}
+.top10_txt span {font-weight: 500;}
+.effect02_4 h4 {width: calc(100% - 10px); text-align: left; padding: 10px 0 10px 10px; background-color: #666666 !important; color: #fff; display: inline-block; font-weight: 400;}
+.effect02_4 .btn_group {display: inline-block; margin: 5px 0;}
+.effect02_4 .btn_group .popup_btn2 {margin: 0; float: right;}
+.effect02_4 .btn_group span {float: left; margin-top: 15px;}
+
+.effect02_5 {width: calc(50% - 10px); height: 500px; border: 0px 1px 1px 1px; border-color: #ddd;}
+.effect02_5>div {height: calc(100% - 35px); border: 1px solid #ddd;}
+
+.effect02_6 {margin-top: 20px;}
+.effect02_6 table:nth-of-type(2) {margin-top: 20px;}
+.effect02_6_txt {line-height: 20px; margin: 10px 0 50px 0;}
+.pop_imgbox {display: inline-block;}
+
+
+/* 20221122 KMAP시스템소개 */
+.trand .sub_title .tab_box {border: unset !important; width: unset !important; height: unset !important; display: inline-block; float: right; padding: 0 !important; margin-top: 25px;}
+.trand .sub_title .tab_box .btn-primary {background-color: #CF0A0A; display: inline-block; height: 60px; width: 150px; line-height: 20px; font-size: 15px; transition: 0.3s; position: relative; padding-top: 10px;}
+.trand .sub_title .tab_box .btn-primary::after {content: 'SELF'; font-size: 12px; position: absolute; top: 1px; right: 25px; font-size: 10px; }
+.trand .sub_title .tab_box .btn-primary:hover {box-shadow:rgba(0, 0, 0, 0.3) 0 3px 3px 0;}
+.main_txt_box {margin-top: 20px; display: inline-block; width: 100%; margin-bottom: 50px;}
+.main_txt {float: left; display: inline-block; width: 50%; height: 600px; background-image: url(../images/sub-page/kmaps-img.png); background-repeat: no-repeat; 
+    background-size: 500px; background-position: 120px 140px;}
+.main_txt p {margin-bottom: 20px; font-size: 20px; font-weight: 500;}
+.main_txt p span {display: inline-block; color: #FD841F; font-weight: 500;}
+.menu_explanation {display: inline-block; width: 100%; float: right; width: 50%;}
+.menu_explanation .board_date07 th, .menu_explanation .board_date07 td {white-space: unset !important; text-overflow: unset !important; overflow: unset !important; padding: 10px; line-height: 20px; height: 60px !important; font-size: 15px;}
+.menu_explanation .board_date07 td {text-align: left;}
+.menu_explanation>p {margin-top:10px; font-size: 14px;}
+.menu_explanation>p:first-child {font-size: 27px; font-weight: 600; margin: 0 0 10px 0 !important;}
+.txt {position: relative;}
+.sub_txt {position: absolute; top: 18px; left: 63px; font-size: 12px; font-weight: 500;}
+
+
+/* 20221123 보고서등록, 작성 */
+.rpt_tab_box {border-bottom: 1px solid #ddd !important; margin-top: 10px !important; display: inline-block;}
+.rpt .tab_box .manual_btn {margin-top: 15px !important;}
+.rpt_tip {display: inline-block;  padding: 15px 0; width: 70%; margin-top: 12px !important; float: left;}
+.rpt_tip span {position: relative; font-size: 14px; display: inline-block; margin-left: 25px;}
+.rpt_tip span::before {content: ''; position: absolute; top: 50%; left: -25px; transform: translateY(-50%); width: 20px; height: 20px;
+    background-image: url(../images/sub-page/TIP_icon.png); background-repeat: no-repeat; background-size: 100%;}
+
+.rpt_tab_box .btn_group { width: 20%; display: inline-block; float: right; margin: 0; padding: 0 !important;}
+.rpt_tab_box .btn_group>a {background-color: #d9534f !important;}
+.rpt_tab_box .btn_group>a:hover {background-color: #d9534f !important;}
+.upload_btn {display: inline-block;}
+.rpt_tabin-search {width: 50% !important; float: right; margin: 10px 0;}
+.rpt_search {width: 22%; float: left; height: 40px; margin-right: 10px; border-radius: unset; border: 3px solid #cccccc; font-size: 14px; float: left;}
+.rpt_tabin-search input {width: 70% !important; float: left;}
+.rpt_table_tab {position: relative; width: 100%;}
+.rpt_table_tab a {display: inline-block; width: 100%;}
+.rpt_table_dep1 {position: absolute; top: 100%; left: 50%; transform: translateX(-50%); width: 115%; height: 186px; overflow-Y: scroll;  background-color: #fff; display: none; border: 1px solid #ddd;}
+.rpt_table_dep1.on {display: inline-block;}
+.rpt_table_tab>a {display: inline-block; position: relative; transition: 0.3s;;}
+.rpt_table_tab>a::after {content: ''; position: absolute; top: 50%; right: 0; transform: translateY(-50%); transition: 0.3s;
+    background-image: url(../images/sub-page/tsub_tab_arrow_down.png); background-position: center; background-repeat: no-repeat; background-size: 100%; width: 12px; height: 12px;}
+.rpt_table_tab.on>a::after {transform: translateY(-50%) rotate(180deg);}
+
+.rpt_table_tab label {color: #000 !important; width:100%; text-align: left; font-size: 13px; line-height: 20px; padding: 5px 0; border-bottom: 1px solid #ddd; transition: 0.3s;} 
+.rpt_table_tab label span {display: inline-block; float: left; width: calc(100% - 30px);}
+.rpt_table_tab label:hover {background-color: #ddd;}
+.rpt_table_tab label:last-child {border-bottom: unset !important;}
+.rpt_table_tab input {margin:5px 5px 0 5px; float: left;}
+.rpt_table_dep1::-webkit-scrollbar {width: 8px;}
+.rpt_table_dep1::-webkit-scrollbar-track {background-color: #e4e4e4; border-radius: 100px;}
+.rpt_table_dep1::-webkit-scrollbar-thumb {background-color: #0D4C92; box-shadow: inset 2px 2px 5px 0 rgba(#fff, 0.5); border-radius: 100px;}
+.meta_list { width: 100%; display: inline-block; text-align: center; padding-left: 1px; margin: 5px 0;}
+.meta_list li {display: inline-block; float: left; width: 40px; height: 40px; margin: 2px;}
+.meta_list li a {font-size: 12px; display: inline-block; border: 1px solid #ddd; width: 100%; height: 100%; text-align: center; line-height: 40px; background-color: #f0f0f0f0;}
+.meta_list li a span {line-height: 15px; display: inline-block; margin-top: 6px;}
+.rpt .day_change button:last-child {background-color: #d9534f; margin-top: 15px;}
+.rpt .pnavi {margin-bottom: 30px;}
+.rpt .pnavi>a {display: inline-block; width: 15px; height: 15px;}
+.rpt .pnavi>a img {width: 100%; height: 100%;}
+.pnavi_box select {width: 50px; margin-bottom: 5px;}
+.rpt_input-page select {height: 30px; display: inline-block; float: left; margin-right: 10px;}
+.rpt_input-page input {height: 30px; display: inline-block; float: left; margin-right: 10px;}
+.rpt_input-page span {margin-right: 10px; width: unset !important; display: inline-block; float: left; line-height: 25px;}
+.rpt_input-page th, .rpt_input-page td {text-align: left !important;}
+.rpt_input-page .defalut_btn, .meta_board_date01 .defalut_btn {height: 20px; line-height: 20px !important; font-size: 13px; cursor: pointer !important;}
+.rpt_defalut_btn {padding-left: 30px; background-image: url(../images/sub-page/search_icon.png); background-repeat: no-repeat; background-size: 17px; background-position: 7px 6px;}
+.rpt_defalut_btn2 {background-color: #d9534f;}
+.rpt_defalut_btn3 {width: unset;}
+.rpt_defalut_btn3 img {margin-bottom: 2px;}
+.rpt_input-page .btn_group .btn02 {margin-left: 20px;}
+.rpt_input-page .btn_group .btn02:last-child {background-color: #d9534f !important;}
+.rpt_input-page .btn_group .btn02:first-child {padding-right: 20px; background-image: url(../images/sub-page/next_arrow.png);
+    background-repeat: no-repeat; background-size: 20px; background-position: 90px 10px;}
+.rpt .popup .top-search {width: 94%;}
+.rpt .popup .scrollbox1 {padding-right: 2px; margin-top: 20px;}
+.rpt .popup .scrollbox1 .defalut_btn {width: 30px;}
+.rpt .popup .pnavi {margin: 0;}
+.rpt .popup2 .top-search {width: 95.3% !important;}
+.dropdown-menu {position: absolute; top: 100%; left: 0;}
+.meta_board_date01 {margin-top: 20px;}
+.meta_board_date01 th, .meta_board_date01 td {text-align: center; padding: 5px;}
+.meta_board_date01 label {float: left; display: inline-block; margin: 0 10px;}
+.meta_board_date01 input {width: 300px; height: 30px; margin-right: 10px;}
+.meta_board_date01 .meta_span {display: inline-block !important; width: unset !important; height: 30px; line-height: 30px; margin: 0 10px; float: left;}
+.rpt_meta .btn_group .btn02 {margin-left: 20px;}
+.rpt_meta .btn_group .btn02:last-child {padding-left: 10px; background-color: #fff !important; border: 2px solid #4251ae; color: #4251ae; font-weight: 500 !important;
+    background-image: url(../images/sub-page/save_icon.png); background-repeat: no-repeat; background-size: 17px; background-position: 20px 9px;}
+.rpt_meta .btn_group .btn02:last-child:hover {background-color: #4251ae !important; color: #fff; background-image: url(../images/sub-page/save_hover_icon.png);}
+.rpt_meta .btn_group .btn02:first-child {padding-left: 20px; background-image: url(../images/sub-page/before_arrow.png);
+    background-repeat: no-repeat; background-size: 20px; background-position: 12px 10px;}
+
+/*20221123 원클릭 분석*/
+.head-menu-box{width: 100%;  height: 120px;}
+.marketWizard{width: 100%; height: 200px; background: #354558 !important;}
+.market_title01{color: #ffb100;}
+.market_header h1{padding-top: 0px;}
+
+table.bbs td{vertical-align:middle; padding-left: 10px;}
+table.bbs td a:hover{text-decoration: underline;}
+table.bbs th{font-weight: 500;}
+.foot-box{width:1400px;}
+#subNavi-wrap{width:200px;}
+.m_contents h2{color: #074fa3;}
+.m_contents h4{background: url(../images/sub-page/bullet_01.png) 0px 8px no-repeat;}
+.leftmenu ul .lm_a2{font-weight: 500}
+.m_box{float:right; width: 1145px; margin-top: 0px; padding:30px 20px;}
+.lm-tit {font-size: 25px;font-weight:600;/* line-height: 120%; */min-height: 23px;padding: 20px 0 17px 0; background:url(/images/main/lm_bg.gif) #074fa3 no-repeat left top;color: #FFF;text-align: center;border-radius: 20px 20px 0px 0px;height: 60px; line-height: 60px;}
+.lm-tit p{color: #fff;}
+.leftmenu ul .lm_l2 > .lm_a2.active{background: #3d538c;}
+
+/*버튼 추가221124*/
+
+.btn09 {height: 30px;display: inline-block;color: #fff;text-align: center;line-height: 30px;background-color: #ff6200;cursor: pointer;transition: 0.3s;padding: 0px 20px;}
+.btn09:hover {background-color: #2e6da4;}
+
+/*추가221124*/
+/*.jstree-default .jstree-node, .jstree-default .jstree-icon{background-image: url("../images/sub-page/32px.png");}*/
+.btn10 {display: inline-block;color: #fff;text-align: center;;background-color: #666666;cursor: pointer;transition: 0.3s;padding: 2px 20px;}
+.btn10:hover {background-color: #4251ae;}
+
+.btn09 {height: 30px;display: inline-block;color: #fff;text-align: center;line-height: 30px;background-color: #ff6200;cursor: pointer;transition: 0.3s;padding: 0px 20px;}
+.btn09:hover {background-color: #2e6da4;}
+.graph-box .name-box span:nth-child(1).on {background: #134e82;color:#fff;border:1px solid #134e82;}
+.graph-box .name-box span:nth-child(2).on { background:#2e9603; color:#fff; border:1px solid #2e9603;}
+.graph-box .name-box span:nth-child(3).on { background:#ef8e27; color:#fff; border:1px solid #0061a0;}
+.graph-box .name-box span:nth-child(4).on { background:#f7791d; color:#fff; border:1px solid #ef6500;}
+.graph-box .name-box span:nth-child(5).on { background:#f50000; color:#fff; border:1px solid #da0000;}
+.hhi-box span.bg { background:url(../images/sub-page/gray_bar01.png) 0 50% no-repeat;}
+.cr3-box span.bg { background:url(../images/sub-page/gray_bar02.png) 0 50% no-repeat;}
+.cr4-box span.bg { background:url(../images/sub-page/gray_bar05.png) 0 50% no-repeat;}
+.leftmenu ul .plus > .lm_a2:hover {background:url(../images/sub-page/lm_blt.png) no-repeat 160px -40px #3d538c;}
+.leftmenu ul .lm_l2 > a.hasSub .isMask {background:url(../images/sub-page/lm_blt.png) no-repeat 160px -40px #3d538c;}
+
+/* 20221128 문의 및 제안 */
+.qna_tabin-search {display: inline-block; width: 70% !important; float: right; margin: 20px 0;}
+.qna_search {display: inline-block; width: 16.7%; float: left; height: 40px; margin-right: 10px; border-radius: unset; border: 3px solid #cccccc; font-size: 14px; float: left;}
+.qna_tabin-search input {width: 56.2% !important; float: left;}
+.qna01 td:nth-of-type(n+2):nth-of-type(-n+5) {text-align: center;}
+.qna_chk {margin-right: 5px; display: inline-block; float: left; width: 15px !important; height: 15px !important; line-height: 0; margin-top: 1px;}
+.qna_chk img {width: 100%; height: 100%px;}
+.qna table a:hover {text-decoration: underline;}
+.qna .p_navi {margin-bottom: 20px;}
+.qna .btn_group {margin-bottom: 20px;}
+.qna_btn01 {display: inline-block; line-height: 35px; background-image: url(../images/sub-page/LIST_icon.png) !important;}
+.qna04 .board_date07 input[type="text"] {height: 30px; float: left; margin-right: 5px;}
+.qna04 .board_date07 select {height: 30px; border-radius: unset;}
+.qna04 .board_date07 .btn01 {background-color: #4251ae !important; cursor: pointer; width: 100%; height: 100%; color: #fff; transition: 0.3s; overflow: hidden;}
+.qna04 .board_date07 .btn01 span {cursor: pointer !important; text-align: center; height: 100%; line-height: 30px; padding-left: 8px;
+    background-image: url(../images/sub-page/search_icon.png); background-repeat: no-repeat; background-size: 12px; background-position: 8px 9px;}
+.qna_btn_group .btn02 {margin-left: 10px; display: inline-block;}
+.qna_btn_group .btn02 span {display: inline-block; margin-top: 12px !important;}
+/* .tx-bar-left { height: 25px;} */
+/* .tx-list {border-left: 1px solid #ddd; height: 100%;} */
+/* .tx-icon {background-color: transparent;} */
+.qna05 input {height: 30px;}
+
+
+/*20221201 야누스 트리 구조 관련 추가*/
+ul.dynatree-container{font-family: 'sc';}
+.dinputtxts{border:none;}
+.left_tree{width:300px; float: left;}
+.right_con{width:850px; float: left;}
+span.dynatree-node a{line-height: 20px;}
+.defaltoutlinebtns{ display: inline-flex;  justify-content: center;
+  align-items: center;  min-width: 80px;  height: 30px;  padding: 10px;  background-color: #f9f9f9;  border: solid 1px #A3ABB8;
+  border-radius: 3px;  font-size: 0.75rem;  font-weight: 600;
+  color: #153D82;  transition: 0.3s;  margin: 1px;}
+.defaltoutlinebtns:hover{  cursor: pointer;  background-color: #DDE7F9;}
+
+/* 20221202 제품별 시장 분석 */
+.MrktAnal .sub-container {width: 100%; padding: 0; margin-top: 20px;}
+.MrktAnal .searchbgcolor {display: inline-block; width: 100%; background-color: #F0F3F8; text-align: center; padding-bottom: 10px;}
+.MrktAnal .searchbgcolor .dinputtxt2 {border: unset; display: inline-block; width: unset;  border-radius: unset; background-color: #F0F3F8; text-align: center;}
+.MrktAnal .searchbgcolor .dinputtxt2 .sub_sel {width: 800px; margin-left: 8px;}
+.MrktAnal .searchbgcolor .btn_group {width: unset; display: inline-block; padding: unset;}
+.MrktAnal .searchbgcolor .btn_group > * {float: unset; font-size: 14px !important;}
+.MrktAnal .marketaboxrtit { font-size: 16px; padding: 15px 0; border-bottom: 1px solid #ddd;}
+.MrktAnal .marketaboxrtit .d-inline {font-weight: 500; }
+.MrktAnal .marketaboxrtit img {cursor: pointer;}
+.MrktAnal .marketaboxl01 {margin-bottom: 20px !important; border-radius: unset;}
+.MrktAnal .marketaboxl01 .board_date07 {margin: 11px 0;}
+.MrktAnal .marketaboxr {border-radius: unset;}
+.MrktAnal .marketaboxrflex {border-radius: unset;}
+.MrktAnal .marketaboxwrap .h4subtit {display: inline-block; font-size: 13px; padding: 0; width: 100% !important; margin: 30px 0 5px 0;}
+.MrktAnal .marketaboxrflex .h4subtit01 {width: 45%; margin-right: 20px;}
+.MrktAnal .marketaboxrflex .h4subtit02 {width: 50%;}
+.popuptiptxt{position: relative; padding-left: 15px;}
+.popuptiptxt::after {content: '';width: 30px; height: 30px; background-image: url(../images/sub-page/bulb_icon.png); background-position: center; background-repeat: no-repeat; background-size: 100%;
+    position: absolute; top: 0; left: -25px;}
+.popupwrap .top-search {width: 94%;}
+.board_date07_cha {margin-top: 20px;}
+.marketaboxwrap table {text-align: center;}
+
+
+/* 20221205 산업위기분석 */
+.excel_down {height: unset; text-align: right;}
+.excel_down .defalut_btn {width: 130px; display: inline-block; height: unset;}
+.table-responsive {display: inline-block; overflow-x: scroll; margin-bottom: 30px; width: 100%;}
+.table-responsive .board_date01 {text-align: center;}
+.table-responsive .board_date01 td, .table-responsive .board_date07 th {width: 80px;}
+.table-responsive::-webkit-scrollbar {height: 10px;}
+.table-responsive::-webkit-scrollbar-track {background-color: #e4e4e4;border-radius: 100px;}
+.table-responsive::-webkit-scrollbar-thumb {background-color: #0D4C92; box-shadow: inset 2px 2px 5px 0 rgba(#fff, 0.5); border-radius: 100px;}
+.cridx .d-flex { margin-top: 20px; background-color: #F0F3F8; padding: 20px 0; display: flex; justify-content: center; align-items: flex-start;}
+.bigselmenu_box { width: 80%; display: flex; align-items: flex-start; justify-content: center !important;}
+.bigselmenu {margin: 0; border: 3px solid #cccccc; display: inline-block; background-color: #fff; display: inline-block; margin-right: 5px;}
+.cridx_sel01 {padding: 4px 0; width: 60% !important;}
+.cridx_sel02 {padding: 5px 0; width: 20% !important;}
+.cridx_sel03 {padding: 5px 0; width: 20% !important;}
+.cridx .top-search-btn {float: unset !important; margin: 0 !important;}
+
+
+/* 20221205 외부환경분석-PEST */
+.anlPestView .tab_box {border: unset;}
+.anlPestView button {width: 160px; height: 40px; margin-top: 8px;}
+.justify-content-end .button {width: 130px !important;}
+.btn-input {width: unset !important; height: 40px !important; margin: 0 0 0 10px !important;}
+.btn-input img {height: 60%; margin: 0 !important;}
+.btn-input_plus {margin-top: 10px;}
+.input-group {float: left;}
+.input-group-btn {display: inline-block; float: left; margin-top: 7px;}
+.PEST_tip {display: inline-block;  padding: 15px 0; width: 70%; margin-top: 5px;}
+.PEST_tip span {position: relative; font-size: 14px; display: inline-block; margin-left: 25px;}
+.PEST_tip span::before {content: ''; position: absolute; top: 50%; left: -25px; transform: translateY(-50%); width: 20px; height: 20px;
+    background-image: url(../images/sub-page/TIP_icon.png); background-repeat: no-repeat; background-size: 100%;}
+.pestwrap { width: 100%;}
+.pestbox {display: inline-block; width: calc(50% - 10px) !important; margin: 0 0 20px 0; flex: unset;}
+.pesttit {font-size: 40px; line-height: 110px !important; height: 100px; padding: 0; text-align: center;}
+.pestcon {min-height: 117px; padding: 0; border: 1px solid #ddd; background-color: unset; padding: 20px;}
+.anlPestView .textareastyle01 {border-radius: unset; float: left; border: 2px solid #cccccc;}
+
+.pesttitwrapp {background-color: #2146C7;}
+.pesttitwrape {background-color: #3B185F;}
+.pesttitwraps {background-color: #e15f44;}
+.pesttitwrapt {background-color: #3b98ab;}
+
+.checkinfo {padding: 0; font-size: 14px; font-family: 'SC'; font-weight: 500; width: calc(100% - 20px);}
+.pest_d-flex {width: 100%; margin-top: 20px;}
+.pest_d-flex .bigselmenu {width: calc(100% - 46px); padding: 0; border-radius: unset; padding: 10px 20px; min-height: unset;}
+.pest_d-flex .bigselmenu .search-select {border: unset;}
+.pest_d-flex .bigselmenu .search-select select {width: 100%; border: unset;}
+.pest_table {margin-top: 20px;}
+.pesttitwrapp_sm {font-size: 13px; display: inline-block; width: 60% !important;}
+.pestttopline > * {color: #fff; font-size: 15px !important;}
+.pestttopline td {padding: 20px 10px;}
+.lsmalltxt {position: relative; height: unset !important; border: 1px solid #DDD; width: 25% !important; padding: 5px 0; float: right !important; margin-top: 5px;}
+.lsmalltxt::after {content: ''; position: absolute; top: 0; left: 0; background-color: #fff; opacity: 0.2; width: 100%; height: 100%;}
+.check_all_p, .check_all_e, .check_all_s, .check_all_t  {margin: 4px 0 0 2px !important; padding: 0; width: 20%; position: relative; z-index: 10; float: left; border: 1px solid red; display: inline-block;}
+.lsmalltxt label {font-size: 12px; display: inline-block !important; width: 75%; text-align: center; float: right;}
+.pest_under {width: calc(100% - 10px); padding-right: 10px;}
+.pesttitwrapp_title {display: inline-block; float: left; width: 70%}
+
+/* 20221206 covid-19 대응정보 */
+.cvd19EftanlView .sub-container {width: 100%; padding: 0; margin-top: 20px; width: 100%;}
+.cvd19EftanlView .marketaboxwrap {margin-top: 20px;}
+.cvd19EftanlView .marketaboxwrap:last-child {margin-bottom: 20px;}
+.cvd19EftanlView .marketaboxwrap .defalut_btn {display: inline-block; font-size: 13px; width: 120px; line-height: 15px; height: 30px;}
+.cvd19EftanlView .marketaboxrflex {border-radius: unset;}
+.cvd19EftanlView .dselmenu {width: calc(100% - 2px) !important; height: unset; padding: 20px 0; display: inline-block; width: 100%; border: unset; border-radius: unset; background-color: #F0F3F8; text-align: center !important;}
+.cvd19EftanlView .dselmenu .search-select {width: 800px; height: 36px; float: unset !important; display: inline-block; border: 2px solid #cccccc;}
+.cvd19EftanlView .dselmenu .search-select select {width: 100%; height: 100%; margin: 0; display: inline-block;}
+.cvd19EftanlView .tabin-search {width: unset !important; margin: 0; display: inline-block; float: unset;}
+.cvd19EftanlView .tabin-search .top-search-btn {float: unset;}
+.cvd19EftanlView .h3subtit {position: relative; font-size: 16px; margin-bottom: 10px; display: inline-block; width: calc(100% - 30px); line-height: 30px; border-bottom: 1px solid #ddd;}
+.cvd19EftanlView .h3subtit::after {content: ''; position: absolute; top: 8px; left: 5px; width: 15px; height: 15px; background-image: url(../images/sub-page/check.png); background-repeat: no-repeat; background-size: 100%; background-position: center;}
+.c19_cap {font-size: 13px; font-weight: 400; margin-bottom: 5px;}
+.tableconbox01 {font-size: 16px; border-radius: unset;}
+.c19_pop {text-align: center;}
+.h4subtit {font-size: 15px; padding: 0; margin-bottom: 20px; color: #7e7e7e;}
+.click_down:hover {text-decoration: underline;}
+
+/* 20221206 제품별 시장분석-첫화면 */
+.marketabox_1 {display: inline-block; border: 1px solid #ddd; margin-top: 20px; width: calc(100% - 2px) !important; text-align: center; box-shadow:#ddd 0 2px 2px 0;}
+.marketabox_2 {display: inline-block; border: 1px solid #ddd; margin-top: 20px; width: calc(100% - 2px) !important; text-align: center; box-shadow:#ddd 0 2px 2px 0; padding: 20px 0;}
+.errortxt, .errortxt_2 {font-size: 16px; line-height: 30px; position: relative; display: inline-block; padding: 20px 0;}
+.errortxt::after {content: ''; position: absolute; top: 50%; left: -65px; transform: translateY(-55%); width: 60px; height: 60px; background-image: url(../images/sub-page/bulb_icon.png); background-position: center; background-repeat: no-repeat; background-size: 100%;}
+.errortxt_2 {padding: 60px 0 !important; font-size: 18px;}
+.errortxt_2::after {content: ''; position: absolute; top: 50%; left: -70px; transform: translateY(-55%); width: 50px; height: 50px; background-image: url(../images/sub-page/TIP_icon.png); background-position: center; background-repeat: no-repeat; background-size: 100%;}
+
+.marketabox_2_title { padding: 20px 0; font-size: 20px; font-weight: 500;}
+.marketabox_2 {margin-bottom:20px; display: inline-block; width: calc(100% - 2px); border: 1px solid #ddd;}
+.chart_area {width: calc(70% - 50px); height: 350px; float: left; padding: 20px;}
+.chart_table {width: calc(30% - 20px); height: 350px; float: right; padding: 20px 20px 20px 0;}
+.chart_table .board_date01 {margin-top: 30px;}
+.chart_table td {height: 50px;}
+
+/* 20221207 국산화 전략품목 */
+.lclztnStritm .sub-container {width: 100%; padding: 0; margin-top: 20px; overflow: unset;}
+.lclztnStritm .searchbgcolor {height: unset; padding: 20px 0; background-color: #F0F3F8; text-align: center; border-radius: unset;}
+.lclztnStritm .dselmenu, .lclztnStritm .dinputtxt2 {border-radius: unset; display: inline-block; height: 40px; padding: unset;}
+.lclztnStritm .dselmenu {width: 20%;}
+.lclztnStritm .dselmenu .search-select {width: 100%; height: 100%;}
+.lclztnStritm .dselmenu .search-select .noline {width: 100%; height: 100%;}
+.lclztnStritm .dinputtxt2 {width: 40%;}
+.lclztnStritm .dinputtxt2 .inputstyle {width: 100%; height: 100%;}
+.lclztnStritm .tabin-search {width: unset; float: unset !important; display: unset;}
+.lclztnStritm .tabin-search .top-search-btn {float: unset !important; display: unset;}
+.cap_total {margin-top: 20px; margin-bottom: 10px; padding: 0; font-size: 14px; font-weight: 500;}
+.conbox01wrap {width: 100%;}
+.cobbox01 {position: relative; width: 50%; border: 1px solid #ddd; border-radius: unset; background-color: unset; padding: 20px 0; box-shadow: 0 0 6px #ddd;}
+.conboxleft {border: 1px solid #ddd; width: 170px; height: 170px; flex: unset; margin: 0 25px; overflow: hidden; display: flex; justify-content: center; align-items: center;}
+.conboxleft img {width: 100%; margin: 0;}
+.defaltbtnsblue {width: 120px; height: 32px; position: absolute; top: 7px; right: -7px; font-size: 14px; color: #fff; text-align: center; line-height: 32px; background-image: url(../images/sub-page/bookmark_bg.png); background-repeat: no-repeat; background-position: center;
+    white-space: nowrap; text-overflow: ellipsis; overflow: hidden;}
+.conboxright {width: calc(64% - 20px); padding: 10px;}
+.ellipsis {border-bottom: 1px solid #ddd; width: 100%; font-size: 20px !important;}
+.ellipsis>a {display: inline-block; width: 100%; padding: 20px 0; white-space: nowrap; text-overflow: ellipsis; overflow: hidden;}
+.ellipsis>a:hover {text-decoration: underline;}
+.ellipsis_content {display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; max-height: 45px; font-size: 14px !important; line-height: 20px;}
+.lclztnStritm .pagewrap {text-align: center; margin-bottom: 15px;}
+
+/* 20221207국산화 전략품목 - 보고서 */
+.labelbtn { min-width: 74px; position: absolute; top: 53%; right: -130px; transform: translateY(-50%); font-size: 14px; font-weight: 400; color: #4251ae; border: 2px solid #4251ae; padding: 5px 10px; border-radius: 15px; transition: 0.3s; cursor: pointer; text-align: center; white-space: nowrap;}
+.labelbtn:hover {background-color: #4251ae; color: #fff;}
+.lclztnStritm_list_btn {margin-top: 30px;}
+.lclztnStritm .exceldnbtn {width: 150px !important; height: 35px;}
+.lclztnStritm .defaltbtn {padding-left: 20px; width: 130px; height: 35px; background-image: url(../images/report/common/report_icon.png); background-repeat: no-repeat; background-size: 18px; background-position: 15px 9px;}
+.reportaera {width: calc(100% - 40px); padding: 20px; margin: 20px 0; border: unset; border-radius: unset; background-color: #e9e7e7;}
+.item_report {background-color: #fff; padding: 20px;}
+
+
+/* 20221209 시장규모-미국시장 */
+.wizard_tab_box {display: inline-block; position: relative;}
+.wizard .box_tab2 {border-bottom: 2px solid #eaeaea; margin-bottom: 20px;}
+.wizard .box_tab2 li {height: calc(100% - 4px); background-color: #eaeaea; border: 2px solid #eaeaea;}
+.wizard .box_tab2 li.on {height: calc(100% - 2px); background-color: #fff; border-color: solid #eaeaea; border-width: 2px 2px 0px 2px;}
+.wizard .box_tab2 li a { height: 100%; display: inline-block; width: 100%; text-align: center; line-height: 30px;}
+.wizard .wizard_btn_box {top: 5px; right: 0px; position: absolute;}
+.wizard .wizard_btn {color: #fff; background-color: #666666; padding: 2px 20px;}
+
+/* 20221209 지식창고-바로가기 */
+.Industrial_p_navi {margin-bottom: 20px;}
+.marketreoport_banner_industry {width: calc(29% - 10px); text-align: center;}
+.marketreoport_graph_industry {width: 70%;}
+.industry-map_box {display: inline-block; width: 100%; box-shadow:#ddd 0 3px 3px 0; margin: 10px 0; background-color: #fafafa;}
+.industry_view .industry-map {width:1160px;height:350px; position:relative; margin: 30px auto; background:url(../images/sub-page/circle_bg.png) 0 0 no-repeat;}
+.industry_search {width:100%; margin-bottom: 10px; display: inline-block !important;}
+.industry_search .tabin-search {display: inline-flex !important; float: right; width: unset;text-align: right;}
+.industry_search .top-search {display: inline-block; float: unset !important; width:500px !important;}
+.industry_search .top-search-btn {display: inline-block !important;float: unset !important;}
+.industry_search .defalut_btn {display: inline-block; float: unset !important; height: unset !important; line-height: 30px !important; }
+.industry_img {display: inline-block; position: relative;} 
+
+/* 20221209 재무구조 */
+.financialAnal2_bar button { width: 250px !important;}
+.resultViewCtrl_le {display: inline-block; width: calc(55% - 10px) !important; float: left;}
+.resultViewCtrl_ri {width: calc(45% - 10px); float: right !important;}
+.footnote00 {display: inline-block; width: 100%; line-height: 25px;}
+.resultViewCtrl_tbl th {background-color: #666666; border-left: 1px solid #ddd;}
+.resultViewCtrl_tbl td {border-left: 1px solid #ddd !important; padding: 6px 3px !important;}
+.resultViewCtrl_tbl {border-right: 1px solid #ddd;}
+
+/* 20221212 시장규모분석 클래스추가 */
+.statisticAnal2 .box_tab2_chart .new_f_l {width: calc(50% - 22px) !important; margin: 10px !important;}
+
+/*기술시장보고서_list*/
+.report_list {width: 23% !important; float: left;}
+.report_list li.btn01 {margin-left:0px}
+.report_list li {margin-bottom:7px;}
+.tbl_r {float:right;width: 74%;padding-top: 20px;}
+.tbl_style_c th {font-size:15px;padding:5px;color: #000;background: #fff;border-bottom: 2px solid #bbb;text-align:center;font-weight: bold;border-top: 2px solid #bbb;}
+ul.report_list li.btn01:hover, ul.report_list li.btn01.active{background: #337ab7 !important;}
+ul.report_list li.btn02:hover, ul.report_list li.btn01.active{background: #337ab7 !important;}
+ul.report_list li.btn03:hover, ul.report_list li.btn01.active{background: #337ab7 !important;}
+ul.report_list li.btn04:hover, ul.report_list li.btn01.active{background: #337ab7 !important;}
+ul.report_list li.btn05:hover, ul.report_list li.btn01.active{background: #337ab7 !important;}
+ul.report_list li.btn06:hover, ul.report_list li.btn01.active{background: #337ab7 !important;}

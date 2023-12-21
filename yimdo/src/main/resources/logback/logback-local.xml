@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+
+    <!-- Appenders -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<layout class="ch.qos.logback.classic.PatternLayout">
+		
+			<Pattern>%d{HH:mm:ss} %-5p [%t] [%-4L] %-37c{0} - %-32M : %m%n</Pattern>
+			<!--  
+			<Pattern>%d{HH:mm:ss} %-5p [%t] [%-4L] %-80c - %-32M : %m%n</Pattern>
+			-->
+			
+		</layout>
+    </appender>
+    
+	<root level="debug">
+		<appender-ref ref="STDOUT"/>
+	</root>
+    
+    <!-- 기본 -->
+    <logger name="org.springframework.security">
+    	<level value="info" />
+    </logger>
+    
+    <logger name="org.springframework.web">
+    	<level value="info" />
+    </logger>
+    
+    <logger name="org.springframework.context">
+    	<level value="info" />
+    </logger>
+    
+    <logger name="org.springframework.beans">
+    	<level value="info" />
+    </logger>
+    
+    <logger name="org.springframework.beans">
+    	<level value="info" />
+    </logger>
+    
+    <logger name="org.springframework.jdbc">
+    	<level value="info" />
+    </logger>
+    
+    <logger name="org.apache.ibatis">
+    	<level value="info" />
+    </logger>
+    
+    <logger name="org.mybatis">
+    	<level value="info" />
+    </logger>
+    
+    <logger name="com.zaxxer">
+    	<level value="info" />
+    </logger>
+    
+    <logger name="org.mariadb">
+    	<level value="info" />
+    </logger>
+    
+    <logger name="org.thymeleaf.TemplateEngine.CONFIG">
+    	<level value="info" />
+    </logger>
+    
+</Configuration>

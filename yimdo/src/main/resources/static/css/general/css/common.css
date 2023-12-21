@@ -1,0 +1,166 @@
+@charset "utf-8";
+
+/************************************************************************
+ * 프로젝트   : 스마트 임도 차단기 개발
+ * 파일명     : common.css
+ * 설명       : 공통
+ * 작성일     : 2023.02.15
+ * 작성자     : jsj 
+ * 버   전    : 0.1
+************************************************************************/
+
+/* clear fix 시작 */
+.fix_c::after {content: ''; display: block; clear: both;}
+/* clear fix 끝 */
+
+/* 버튼 시작 */
+.btn_box {display: inline-block; width: 100%; text-align: center;}
+
+.btn_01 {height: 30px; color: #fff; font-size: 18px; font-weight: 400; line-height: 18px; background: #060047; border-radius: 5px; background: linear-gradient(300deg, #2795b5 0%, #4d73c7 25%, #3557a2 51%, #2795b5 100%); background-position: 1% 50%; background-size: 200% auto; transition: all 0.3s ease-out;}
+.btn_01:hover {background-position: 99% 50%;}
+.btn_02 {height: 30px; color: #fff; font-size: 18px; font-weight: 400; line-height: 18px; border-radius: 5px; background-color: #999999; transition: 0.3s;}
+.btn_02:hover {background-color: #666666;}
+/* 버튼 끝 */
+
+/*----------------- 기본 form 디자인 -----------------*/
+select{-webkit-appearance: none;-moz-appearance: none;appearance: none; background: #fff url(../images/dash_select2.png) no-repeat 98% 45%;padding: 0 24px 0 10px;}
+select::-ms-expand { display: none; }
+select,input { box-sizing: border-box;padding-left: 10px;}
+select.form,
+input.form {height: 30px;display:inline-block;border: 1px solid #e0e0e0;box-sizing: border-box;vertical-align: middle;background-color:#fff;transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;min-width: 50px;color: #6b6b6b;margin: 0 1px; cursor: pointer}
+input.form[type="radio"], input[type="checkbox"] {background:none; border:none;}
+input.form[type="text"] {box-sizing:border-box;color:#303030;}
+/*
+input.form[type='file']{height:auto;padding-top:.583em;padding-bottom:.583em; line-height:1.333;}
+*/
+select.form {background: #fff url(../images/dash_select2.png) no-repeat center right 8px;}
+input.form:hover, select.form:hover, textarea.form:hover, .inp_date:hover {border-color:#686868}
+input.form:disabled {background:#e9ecef!important }
+input.form:disabled:hover { border: 1px solid #b8b8b8;}
+textarea.form {width:100%;height:8em;line-height:1.333;font-size:14px;border-radius: 2px; border: 1px solid #ced4da; background-color: #fff;}
+textarea.form.lg {height:16em !important;}
+textarea.form.xlg {height:30em !important;}
+textarea.form:disabled {background:#e9ecef!important }
+.inp_date { display: inline-block; width:130px; height: 30px; border: 1px solid #e0e0e0;box-sizing: border-box;vertical-align: top; transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out; color: #6b6b6b;margin: 0 1px; text-align: left; background: #FFF url(../images/btn_calender.png) no-repeat; cursor: pointer; background-position: 95%;   }
+textarea { box-sizing: border-box; padding: 10px;}
+select:focus, textarea:focus, input:focus, button:focus, textarea:focus { border: 1px solid #727272 !important;}
+/*----------------- 기본 form 디자인 -----------------*/
+
+/* 기본테이블 시작 */
+.table_typA { display:block; position: relative; overflow:hidden;width: 100%; max-width: 1200px;}
+.contTbl{padding: 0 10px; display: table; width:100%; border:0; border-spacing: 0; border-collapse:collapse; border-top: 2px solid #333; border-bottom: 1px solid #ccc; border-right:1px solid #fff;background:#fff;word-break: keep-all;table-layout: auto;}
+.contTbl>*>tr{border-right:2px solid #fff;}
+.contTbl>*>tr>th,
+.contTbl>*>tr>td {font-size: 18px; padding: 8px 4px;border-color: #cccccc;border-style:solid;border-width:1px 1px 0 0;vertical-align:middle;line-height:1.2;}
+.contTbl>*>tr>td{font-size: 14px; text-align: left; line-height: 30px;}
+.contTbl>*>tr>td a{color: #0024a5; font-weight: 500;word-break: break-all;}
+.contTbl>*>tr>td a:not([class*='btn']):hover{text-decoration: underline;}
+.contTbl>*>tr>td p{margin: 3px 0}
+.contTbl>*>tr>th{background: #fafafa;color: #333;font-weight: 500;}
+.contTbl>*>tr>th[scope=rowgroup],.contTbl>*>tr>th[scope=colgroup],.thBg{background: #f2f2f2 !important}
+.contTbl>*>tr>*:last-child{border-right: none;}
+.contTbl>thead>tr>th{border-width:0 1px 1px 0;text-align:center;padding: 10px 5px;}
+.borR{ border-right:1px solid #ccc !important}
+.contTbl > tfoot > * {background: #f7f7f7;font-weight:400;}
+.contTbl > tfoot td,.contTbl > tfoot th{border-top: 1px solid #888}
+.contTbl>tbody>tr:first-child>th, .contTbl>tbody>tr:first-child>td{border-top-width:0;}
+.contTbl * > table {margin:0 !important;}    
+/* 기본테이블 끝 */
+
+/* 테이블 반응형 시작 */
+@media screen and (max-width: 1200px) {
+    .contTbl col {width: 100% !important;}
+    .contTbl th {display: none;}
+    .contTbl tr td {width: 100%; display: flex; padding: unset; font-size: 14px; line-height: 18px; align-items: center; white-space: nowrap;}
+    .contTbl tr td:before {width: 100%; min-height: 50px; color: #333; background-color: #fafafa; border-right: 1px solid #cccccc; display: flex; justify-content: center; align-items: center; margin-right: 12px; flex: 0 0 150px; font-weight: 500; content: attr(data-label);}
+    .contTbl>tbody>tr:first-child>th, .contTbl>tbody>tr:first-child>td{border-top-width: 1px;}
+}
+/* 테이블 반응형 끝 */
+
+/* tr호버효과 */
+table.tbl_hover tbody tr:hover{background: #faf8f1; cursor: pointer;}
+table tbody tr.on {background:  #f3f9ff;}
+.thC>tbody>tr>th{text-align: center !important;}
+.tdL th{text-align: center;}
+.tdL td, .tbtdL{text-align: left;}
+.tdL td, .tbtdR{text-align: right ;}
+
+/* radio */
+.radio {position: relative; display: inline-block;vertical-align: middle;}
+.radio input[type="radio"] { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip:rect(0,0,0,0); border: 0; }
+.radio input[type="radio"] + label {display: inline-block;position: relative;padding-left: 25px;cursor: pointer;vertical-align: top; font-size:15px;}
+.radio input[type="radio"] + label:before {content: '';position: absolute;left: 0;top: 50%;margin-top: -8.5px;width: 20px;height: 20px;text-align: center;background: #fafafa;border: 1px solid #cacece;border-radius: 100%;}
+.radio input[type="radio"]:checked + label:before {border-color: #adb8c0;}
+.radio input[type="radio"]:checked + label:after {content: '';position: absolute;top: 50%;margin-top: -3.4px;left: 5px;width: 10px;height: 10px;background: #1967b4;border-radius: 100%;}
+.radio li{float: left;margin-right: 12px}
+.term {position: relative;display: inline-block;width: 135px;}
+input[type="radio"] + label:hover, input[type="checkbox"] + label:hover,
+input[type="radio"] + label:focus, input[type="checkbox"] + label:focus  { text-decoration: underline !important; cursor: pointer; }
+
+/* checkbox */
+.checkboX {position: relative; display: inline-block;vertical-align: middle;}
+.checkboL li{margin-right: 12px}
+input[type="checkbox"] { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip:rect(0,0,0,0); border: 0; }i
+input[type="checkbox"] + label { display: inline-block; position:relative; }
+input[type="checkbox"] + label:before { content:""; display:inline-block; margin:0 4px 0 0; width:20px; height:20px; border:1px solid #cacece; background-color:#FFF; position:relative; top:4px; border-radius:3px; transition:all 0.5s; }
+input[type="checkbox"]:checked + label:before { background:#004ac5; border:1px solid #003fbe}
+input[type="checkbox"]:checked + label:after  {content: ''; position:absolute; left:0px; top:4px; background: url(../images/checkboximg.png) no-repeat center; width:20px; height:20px; background-size:14px auto }
+
+
+/* 달력 */
+.ui-datepicker .ui-datepicker-header { padding: 15px 0 !important; }
+.ui-datepicker { width: 250px !important; padding: 0px !important ; display: none; border: 0; margin-top: 5px; box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.06), 0 5px 0 0 rgba(0, 0, 0, 0.02);  }
+.ui-widget.ui-widget-content {  border-radius: 3px; overflow: hidden; background: #fff; }
+.ui-datepicker .ui-widget-header { position: relative;  border: 0;  background:#31499d; border-bottom:1px solid #25346c; color: #fff; border-radius: 0; }
+.ui-datepicker .ui-datepicker-title { color:#FFF; font-weight:500; font-size:14px !important; line-height: 15px !important;}
+.ui-datepicker th { font-size:14px !important;}
+.ui-datepicker td span, .ui-datepicker td a { padding: 5px !important; text-align: center !important; text-decoration: none; font-size:13px !important}
+.ui-datepicker-calendar > tbody td:first-child a { color:#F00 !important }
+.ui-datepicker-calendar > tbody td:last-child a { color:#06F !important }
+.ui-state-active, .ui-widget-content .ui-state-active { background: #f6fafd !important; border:1px solid #31499d !important; color:#006 !important  }
+.ui-icon { display:none !important}
+.ui-state-hover {  border: none !important; }
+.ui-datepicker .ui-datepicker-prev { position: absolute; top: 15px !important; left:1px !important; width:30px !important; height:30px !important; }
+.ui-datepicker .ui-datepicker-next { position: absolute; top: 15px !important; right:1px !important; width:34px !important; height:30px !important; }
+.ui-datepicker .ui-datepicker-prev { background: url(../images/ca_arrow_prev_img.png)no-repeat !important; cursor: pointer; }
+.ui-datepicker .ui-datepicker-next { background: url(../images/ca_arrow_next_img.png) no-repeat !important; cursor: pointer; }
+.ui-state-highlight, .ui-widget-content .ui-state-highlight { border: 1px solid #0c3681 !important; background: #0c3681 !important; color: #FFF !important; }
+
+.ui-datepicker-title select { overflow:hidden; border:1px solid #F0F; margin:0 3px !important; cursor: pointer;}
+.ui-datepicker-title select {-webkit-appearance: none;-moz-appearance: none;appearance: none; background: #fff url(../images/dash_select2.png) no-repeat 98% 45%;padding: 0 24px 0 10px;}
+.ui-datepicker-title select::-ms-expand { display: none; }
+.ui-datepicker-title select{ box-sizing: border-box;padding-left: 10px;}
+.ui-datepicker-title select {height: 30px;display:inline-block;border: 1px solid #e0e0e0;box-sizing: border-box;vertical-align: top;background-color:#fff;transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;min-width: 50px;color: #6b6b6b;margin: 0 1px;}
+
+/* 20230221 float 클래스 설정 - jsj */
+.f_ri {float: right !important;}
+.f_le {float: left !important;}
+
+
+/* 검색박스 시작 */
+.SearchBox { border:1px solid #aac4eb; background:#f1f5fa; }
+.filterForm_in {padding:15px;box-sizing: border-box;height: auto;overflow: hidden;}
+
+.SearchBox .row{float: left;position: relative;width: 100%;margin: 2px 0;align-items: center;}
+.SearchBox .row-1  {width: 8.333333%; }
+.SearchBox .row-2  {width: 16.666667%;}
+.SearchBox .row-3_1 {width: 20%;}
+.SearchBox .row-3  {width: 25%;}
+.SearchBox .row-4_1  {width: 32%;}
+.SearchBox .row-4  {width: 33.333333%;}
+.SearchBox .row-5_1  {width: 36%;}
+.SearchBox .row-5  {width: 41.666667%;}
+.SearchBox .row-6  {width: 50%;}
+.SearchBox .row-7  {width: 58.333333%;}
+.SearchBox .row-8  {width: 66.666667%;}
+.SearchBox .row-9  {width: 75%;}
+.SearchBox .row-10 {width: 83.333333%;}
+.SearchBox .row-11 {width: 91.666667%;}
+.SearchBox .row-12 {width: 100%;}
+.SearchBox dt{width: 130px; padding: 0 10px; box-sizing: border-box;float: left;font-weight: 600;line-height: 30px;}
+.SearchBox dt:after { content:':'; padding:0 5px; line-height: 30px;}
+.SearchBox dd{width: calc(100% - 130px); padding: 0 10 0 10px;color: #555;box-sizing: border-box;float: left;}
+.btn_wrap{width: 100%; display: table; }
+.btn_align { padding: 0px 15px ; float:right }
+.sim { line-height:30px; }
+/* 검색박스 끝 */

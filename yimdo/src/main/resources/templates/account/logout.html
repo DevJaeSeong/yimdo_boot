@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta th:replace="~{/common/head :: commonMeta}">
+	<title th:replace="~{/common/head :: commonTitle}"></title>
+	<link th:replace="~{/common/head :: icon}">
+	
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+</head>
+<body>
+	<script th:inline="javascript">
+		$(function() {
+		
+			logout();
+		})
+		
+		function logout() {
+			
+			const csrfToken = $("meta[name='_csrf']").attr("content");
+			
+			const form = $('<form>', {
+			
+		        'action': '/logoutConfirm'
+		        , 'method': 'POST'
+		        , 'style': 'display: none;'
+			});
+			
+			$('body').append(form);
+			form.submit();
+		}
+	</script>
+</body>
+</html>

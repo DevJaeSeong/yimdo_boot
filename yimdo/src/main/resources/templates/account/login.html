@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta name="_csrf" th:content="${_csrf.token}">
+	<meta th:replace="~{/common/head :: commonMeta}">
+	<title th:replace="~{/common/head :: commonTitle}"></title>
+	<link th:replace="~{/common/head :: icon}">
+	
+	<link rel="stylesheet" th:href="@{/css/general/css/font.css}">
+	<link rel="stylesheet" th:href="@{/css/general/css/default.css}">
+	<link rel="stylesheet" th:href="@{/css/general/css/common.css}">
+	<link rel="stylesheet" th:href="@{/css/general/css/layout.css}">
+	
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+	<script defer type="text/javascript" th:src="@{/js/general/login.js}"></script>
+</head>
+<body>
+	<div class="wrap">
+        <section class="log_sec">
+            <article>
+                <!-- 로그인화면 왼쪽 텍스트 부분 시작 -->
+                <div class="log_inner01">
+                    <p class="main_title mb35"><span>스마트</span> <span>임도</span> <span>차단기</span></p>
+                    <p class="sub_title mb25">스마트 임도 차단기 시스템에<br/>오신것을 환영합니다.</p>
+                    <p class="title_txt mb25">산림환경, 기후변화 등 변화에 대한 정략적 분석을 도출하여<br/>임도를 통한 산림의 이용 및 활용성을 확인해보세요.</p>
+                    <p class="log_sub_txt">사용을 위해 로그인 해주세요.</p>
+                </div>
+                <!-- 로그인화면 왼쪽 텍스트 부분 끝 -->
+
+                <!-- 로그인화면 오른쪽 아이디, 비밀번호 입력부분 시작 -->
+                <div class="log_inner02">
+                    <div class="log_box">
+                        <p class="log_wel mb55">환영합니다</p>
+                        <ul class="info_box">
+                            <li>
+                                <p class="info_box_title mb15">아이디</p>
+                                <label for="loginId" class="txt_hidden">아이디 입력</label>
+                                <input type="text" placeholder="" id="loginId" name="loginId" value="">
+                            </li>
+                            <li class="mt15">
+                                <p class="info_box_title mb15">비밀번호</p>
+                                <label for="loginPasswd" class="txt_hidden">비밀번호 입력</label>
+                                <input type="password" placeholder="" id="loginPasswd" name="loginPasswd" value="">
+                            </li>
+                        </ul>
+                        <button id="loginBtn" class="log_btn mt50" title="로그인">로그인</button>
+                        <button id="createAccountBtn" class="log_btn mt50" title="회원가입" >회원가입</button>
+                    </div>
+                    <p class="m_log_sub_txt">사용을 위해 로그인 해주세요.</p>
+                </div>
+                <!-- 로그인화면 오른쪽 아이디, 비밀번호 입력부분 끝 -->
+            </article>
+        </section>
+    </div>
+	<div th:replace="~{/common/loading :: loading}"></div>
+</body>
+</html>

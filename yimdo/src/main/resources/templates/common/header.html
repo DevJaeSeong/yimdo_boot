@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+
+	<div th:fragment="adminHeader">
+	
+		<script th:inline="javascript">
+			$(function() {
+			
+				const menuNum = /*[[${menuNum}]]*/ ''; 
+				if (!menuNum) return;
+				$('ul.gnb_menu li:nth-child(' + menuNum + ') a').removeClass('bul').addClass('bul bulon');
+			})
+			
+			function logout() {
+				
+				const csrfToken = $("meta[name='_csrf']").attr("content");
+				
+				const form = $('<form>', {
+				
+			        'action': '/logoutConfirm'
+			        , 'method': 'POST'
+			        , 'style': 'display: none;'
+				});
+				
+				form.append('<input type="hidden" name="_csrf" value="' + csrfToken + '">');
+				$('body').append(form);
+				form.submit();
+			}
+		</script>
+	
+		<input type="hidden" th:name="_csrf" th:value="${_csrf.token}"/>
+	
+		<div class="header_wrap">
+			<div class="head_in">
+		     <div class="logo_box">
+		         <a href="/admin/main.do" class="link_kesco" title="서비스바로가기"><span class="blind">서비스바로가기</span></a>
+		         <div class="link_logo" title="스마트임도관리시스템"><span>스마트임도관리시스템</span></div>
+		     </div>
+		     <ul class="utility">
+		        <li class="total_menu"><a href="#none" class="btn_menu btn_total" ><span class="blind">전체메뉴 보기</span></a></li>
+		        <li class="total_menu"><a href="javascript:logout();" class="btn_menu btn_total02" ><span class="blind">로그아웃</span></a></li>
+		     </ul>
+		    </div>
+		</div>
+		<div class="gnb">
+			<div class="blind">관리시스템 주요서비스</div>
+			<ul class="gnb_menu">
+				<li class="depth1">
+					<a href="#none" class="bul" title="차단기상태현황">차단기상태현황</a>
+				</li>
+				<li class="depth1">
+					<a href="#none" class="bul" title="차단기관리이력">차단기관리이력</a>
+				</li>
+				<li class="depth1">
+					<a href="#none" class="bul" title="임도출입이력">임도출입이력</a>
+				</li>
+				<li class="depth1">
+					<a href="#none" class="bul" title="출입제한 인자구분">출입제한 인자구분</a>
+				</li>
+				<li class="depth1">
+					<a href="#none" class="bul" title="출입제한 인자정보">출입제한 인자정보</a>
+				</li>
+				<li class="depth1">
+					<a href="#none" class="bul" title="기상관측기 기상정보">기상관측기 기상정보</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+</body>
+</html>
