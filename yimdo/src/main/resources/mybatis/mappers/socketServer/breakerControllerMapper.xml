@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="yimdo.socketServer.mapper.BreakerControllerMapper">
+
+    <select id="selectBreakerStatusById" parameterType="String" resultType="String">
+ 		SELECT
+ 			BREAKER_STATUS_CODE
+ 		FROM
+ 			BREAKER_INFO
+ 		WHERE
+ 			BREAKER_ID = #{breakerId}
+    </select>
+	
+	<update id="updateBreakerPolicyDetail">
+		UPDATE
+			BREAKER_INFO
+		SET
+			BREAKER_POLICY_CODE = #{breakerPolicyCode}
+			, ELEMENT_CODE = #{elementCode}
+			, MODIFY_DETAIL = #{modifyDetail}
+			, MODIFY_DATE = NOW()
+			, MODIFIER = #{modifier}
+			<if test="systemControl != null">
+			, SYSTEM_CONTROL = #{systemControl}
+			</if>
+		WHERE
+			BREAKER_ID = #{breakerId}
+    </update>
+	
+    <insert id="insertBreakerHistory" parameterType="BreakerHistoryVo" useGeneratedKeys="true" keyProperty="breakerHistoryId">
+    	INSERT INTO
+    		BREAKER_HISTORY
+    		(
+				BREAKER_ID
+				, BREAKER_POLICY_CODE
+				, MODIFIER
+				, ELEMENT_CODE
+				, MODIFY_DETAIL
+				, MODIFY_REQ_DATE
+    		)
+    		VALUES
+    		(
+    			#{breakerId}
+    			, #{breakerPolicyCode}
+    			, #{modifier}
+    			, #{elementCode}
+    			, #{modifyDetail}
+    			, NOW()
+    		)
+    </insert>
+</mapper>

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="yimdo.socketServer.mapper.SocketServerMapper">
+
+	<resultMap id="BreakerInfoVoMap" type="BreakerInfoVo">
+        <result property="breakerId" 			column="BREAKER_ID"/>
+        <result property="breakerIp" 			column="BREAKER_IP"/>
+        <result property="yimdoCode" 			column="YIMDO_CODE"/>
+        <result property="yimdoName" 			column="YIMDO_NAME"/>
+        <result property="breakerPolicyCode" 	column="BREAKER_POLICY_CODE"/>
+        <result property="breakerPolicyName" 	column="BREAKER_POLICY_NAME"/>
+        <result property="modifier" 			column="MODIFIER"/>
+        <result property="modifyDate" 			column="MODIFY_DATE"/>
+        <result property="elementCode" 			column="ELEMENT_CODE"/>
+        <result property="elementName" 			column="ELEMENT_NAME"/>
+        <result property="modifyDetail" 		column="MODIFY_DETAIL"/>
+        <result property="breakerStatusCode" 	column="BREAKER_STATUS_CODE"/>
+        <result property="breakerStatusName" 	column="BREAKER_STATUS_NAME"/>
+        <result property="breakerStatusModDate" column="BREAKER_STATUS_MOD_DATE"/>
+        <result property="systemControl" 		column="SYSTEM_CONTROL"/>
+    </resultMap>
+
+	<insert id="insertBreakerInfo" parameterType="SocketServerVo">
+		INSERT INTO
+			BREAKER_INFO
+			(BREAKER_ID, BREAKER_IP) VALUES (#{breakerId}, #{breakerIp})
+		ON DUPLICATE KEY 
+		UPDATE
+			BREAKER_IP = #{breakerIp}
+			, MOD_DATE = NOW()
+	</insert>
+
+	<insert id="insertPresenceReport">
+		INSERT INTO
+			BREAKER_PRESENCE_REPORT
+			(
+				BREAKER_ID, 
+				BREAKER_STATUS, 
+				BREAKER_REPORT_REG
+			)
+		VALUES
+			(
+				#{breakerId}, 
+				#{breakerStatus}, 
+				NOW()
+			)
+	</insert>
+
+	<update id="updateBreakerStatus">
+		UPDATE
+			BREAKER_INFO
+		SET
+			BREAKER_STATUS_CODE = #{breakerStatus},
+			BREAKER_STATUS_MOD_DATE = NOW()
+		WHERE
+			BREAKER_ID = #{breakerId}
+	</update>
+	
+	<select id="selectBreakerPolicy" resultType="String">
+		SELECT
+			BREAKER_POLICY_CODE
+		FROM
+			BREAKER_INFO
+		WHERE
+			BREAKER_ID = #{breakerId}
+	</select>
+	
+    <update id="updateBreakerPolicy">
+		UPDATE
+			BREAKER_INFO
+		SET
+			BREAKER_POLICY_CODE = #{breakerPolicyCode}
+		WHERE
+			BREAKER_ID = #{breakerId}
+    </update>
+    
+	<update id="updateBreakerHistory">
+		UPDATE
+			BREAKER_HISTORY
+		SET
+			MODIFY_RECIVE_DATE = #{reciveDateTime},
+			MODIFY_RES_DATE = #{resDateTime}
+		WHERE
+			BREAKER_HISTORY_ID = #{breakerHistoryId}
+	</update> 
+	
+	<insert id="insertWeatherData" parameterType="WeatherDataVo">
+		INSERT INTO
+			WEATHER_DATA
+		(
+			BREAKER_ID
+			, DIR
+			, TMP
+			, HM
+			, WIND
+			, GUST
+			, RAIN
+			, UV
+			, LIGHT
+		)
+		VALUES
+		(
+			#{breakerId}
+			, #{dir}
+			, #{tmp}
+			, #{hm}
+			, #{wind}
+			, #{gust}
+			, #{rain}
+			, #{uv}
+			, #{light}
+		)
+	</insert>
+</mapper>

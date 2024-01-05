@@ -1,13 +1,8 @@
 package yimdo.serverConfig.security.component;
 
 import java.io.IOException;
-import java.util.Enumeration;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.concurrent.Executor;
 
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -26,22 +21,16 @@ import yimdo.serverConfig.server.ServerConfig;
 public class CustomFilter extends OncePerRequestFilter {
 
 	private final AesEncrypter aesEncrypter;
-	private final Executor executor;
 	
-	public CustomFilter(AesEncrypter aesEncrypter, Executor executor) {
+	public CustomFilter(AesEncrypter aesEncrypter) {
 		
 		this.aesEncrypter = aesEncrypter;
-		this.executor = executor;
 	}
 	
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
 			throws ServletException, IOException {
         
-		request = new CustomHttpServletRequestWrapper(request, executor);
-		
-		printRequest((CustomHttpServletRequestWrapper) request);
-		
 		try {
 			
 			if (!"/logout".equals(request.getRequestURI())) {
@@ -113,63 +102,4 @@ public class CustomFilter extends OncePerRequestFilter {
 			throw new DifferentAuthenticatedInfoException("요청identifyTokenValue와 저장된identifyTokenValue가 다름 (요청identifyTokenValue: " + requestIdentifyTokenValue + ", 저장된identifyTokenValue: " + identifyTokenValue + ")");
 		}
 	}
-
-	/**
-	 * 서버에 접근하는 사용자의 정보를 콘솔에 출력.
-	 */
-	private void printRequest(CustomHttpServletRequestWrapper request) {
-		
-		String requestURI = request.getRequestURI();
-		String remoteAddr = request.getRemoteAddr();
-		String sessionId = request.getRequestedSessionId();
-		String method = request.getMethod();
-		String requestBody = readRequest(request);
-		String principal = "";
-		
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		
-		if (authentication instanceof UsernamePasswordAuthenticationToken) {
-			
-			principal = ((CustomUser) authentication.getPrincipal()).toString();
-			
-		} else if (authentication instanceof AnonymousAuthenticationToken) {
-			
-			principal = (String) authentication.getPrincipal();
-		}
-		
-		log.debug("사용자: [\"{}\", \"{}\", {}]", remoteAddr, sessionId, principal);
-		log.debug("요청내용: [({}) \"{}\", \"{}\"]", method, requestURI, requestBody);
-	}
-
-	private String readRequest(CustomHttpServletRequestWrapper request) {
-		
-		String method = request.getMethod();
-		String requestData = readParameters(request);
-		
-		if (!"GET".equals(method)) {
-			
-			if (request.getContentType().toLowerCase().contains("json")) {
-				
-				requestData = new String(request.getRequestData());
-			} 
-		}
-		
-		return requestData;
-	}
-	
-    private String readParameters(HttpServletRequest request) {
-    	
-        Enumeration<String> parameterNames = request.getParameterNames();
-        Map<String, Object> parameterMap = new LinkedHashMap<String, Object>();
-        
-        while (parameterNames.hasMoreElements()) {
-        	
-            String parameterName = parameterNames.nextElement();
-            String parameterValue = request.getParameter(parameterName);
-            
-            parameterMap.put(parameterName, parameterValue);
-        }
-		
-    	return parameterMap.toString();
-    }
 }

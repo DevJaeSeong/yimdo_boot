@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+	
+<mapper namespace="yimdo.web.common.mapper.CommonDataMapper">
+    
+	<resultMap id="SidoVoMap" type="SidoVo">
+        <result property="sidoCode" column="SIDO_CODE"/>
+        <result property="sidoName" column="SIDO_NAME"/>
+    </resultMap>
+    
+	<resultMap id="SigunguVoMap" type="SigunguVo">
+        <result property="sigunguCode" column="SIGUNGU_CODE"/>
+        <result property="sigunguName" column="SIGUNGU_NAME"/>
+        <result property="sidoCode" column="SIDO_CODE"/>
+    </resultMap>
+    
+    <resultMap id="YimdoInfoVoMap" type="YimdoInfoVo">
+        <result property="yimdoCode" column="YIMDO_CODE"/>
+        <result property="yimdoName" column="YIMDO_NAME"/>
+        <result property="yimdoSido" column="YIMDO_SIDO"/>
+        <result property="yimdoSidoName" column="SIDO_NAME"/>
+        <result property="yimdoGungu" column="YIMDO_GUNGU"/>
+        <result property="yimdoGunguName" column="SIGUNGU_NAME"/>
+        <result property="yimdoDetail" column="YIMDO_DETAIL"/>
+        <result property="yimdoAddress" column="YIMDO_ADDRESS"/>
+        <result property="yimdoDistance" column="YIMDO_DISTANCE"/>
+    </resultMap>
+    
+    <resultMap id="BreakerInfoVoMap" type="BreakerInfoVo">
+        <result property="breakerId" column="BREAKER_ID"/>
+        <result property="breakerIp" column="BREAKER_IP"/>
+        <result property="yimdoCode" column="YIMDO_CODE"/>
+        <result property="yimdoName" column="YIMDO_NAME"/>
+        <result property="breakerPolicyCode" column="BREAKER_POLICY_CODE"/>
+        <result property="breakerPolicyName" column="BREAKER_POLICY_NAME"/>
+        <result property="modifier" column="MODIFIER"/>
+        <result property="modifyDate" column="MODIFY_DATE"/>
+        <result property="elementCode" column="ELEMENT_CODE"/>
+        <result property="elementName" column="ELEMENT_NAME"/>
+        <result property="modifyDetail" column="MODIFY_DETAIL"/>
+        <result property="breakerStatusCode" column="BREAKER_STATUS_CODE"/>
+        <result property="breakerStatusName" column="BREAKER_STATUS_NAME"/>
+        <result property="breakerStatusModDate" column="BREAKER_STATUS_MOD_DATE"/>
+        <result property="systemControl" column="SYSTEM_CONTROL"/>
+        <result property="yimdoSido" column="YIMDO_SIDO"/>
+        <result property="yimdoGungu" column="YIMDO_GUNGU"/>
+    </resultMap>
+    
+    <resultMap id="ModifyElementVoMap" type="ModifyElementVo">
+        <result property="elementCode" column="ELEMENT_CODE"/>
+        <result property="elementName" column="ELEMENT_NAME"/>
+        <result property="elementUnit" column="ELEMENT_UNIT"/>
+        <result property="elementValue" column="ELEMENT_VALUE"/>
+        <result property="elementUseYn" column="ELEMENT_USE_YN"/>
+    </resultMap>
+	
+	<select id="getSido" resultMap="SidoVoMap">
+		SELECT
+			SIDO_CODE,
+			SIDO_NAME
+		FROM
+			CITY_SIDO
+	</select>
+	
+	<select id="getSigungu" resultMap="SigunguVoMap">
+		SELECT
+			SIGUNGU_CODE,
+			SIGUNGU_NAME,
+			SIDO_CODE
+		FROM
+			CITY_SIGUNGU
+		WHERE
+			SIDO_CODE = #{sido}
+	</select>
+	
+	<select id="getYimdoList" resultMap="YimdoInfoVoMap">
+		SELECT 
+			Y.YIMDO_CODE AS YIMDO_CODE,
+			Y.YIMDO_NAME AS YIMDO_NAME,
+			Y.YIMDO_SIDO AS YIMDO_SIDO,
+			SD.SIDO_NAME AS SIDO_NAME,
+			Y.YIMDO_GUNGU AS YIMDO_GUNGU,
+			SG.SIGUNGU_NAME AS SIGUNGU_NAME,
+			Y.YIMDO_DETAIL AS YIMDO_DETAIL,
+			Y.YIMDO_ADDRESS AS YIMDO_ADDRESS,
+			Y.YIMDO_DISTANCE AS YIMDO_DISTANCE
+		FROM 
+			YIMDO_INFO AS Y
+			JOIN CITY_SIDO AS SD ON Y.YIMDO_SIDO = SD.SIDO_CODE
+			JOIN CITY_SIGUNGU AS SG ON Y.YIMDO_GUNGU = SG.SIGUNGU_CODE
+		<where>
+			<choose>
+				<when test="sido != null and sido != ''">
+					AND Y.YIMDO_SIDO = #{sido}
+				</when>
+			</choose>
+			<choose>
+				<when test="sigungu != null and sigungu != ''">
+					AND Y.YIMDO_GUNGU = #{sigungu}
+				</when>
+			</choose>
+			<choose>
+				<when test="searchKeyword != null and searchKeyword != ''">
+					AND Y.YIMDO_NAME LIKE CONCAT('%', #{searchKeyword}, '%')
+				</when>
+			</choose>
+		</where>
+		ORDER BY Y.YIMDO_CODE ASC
+		LIMIT #{firstIndex}, #{pageUnit}
+	</select>
+	
+	<select id="getYimdoListTotalCount" resultType="int">
+		SELECT 
+			COUNT(Y.YIMDO_CODE)
+		FROM 
+			YIMDO_INFO AS Y
+			JOIN CITY_SIDO AS SD ON Y.YIMDO_SIDO = SD.SIDO_CODE
+			JOIN CITY_SIGUNGU AS SG ON Y.YIMDO_GUNGU = SG.SIGUNGU_CODE
+		<where>
+			<choose>
+				<when test="sido != null and sido != ''">
+					AND Y.YIMDO_SIDO = #{sido}
+				</when>
+			</choose>
+			<choose>
+				<when test="sigungu != null and sigungu != ''">
+					AND Y.YIMDO_GUNGU = #{sigungu}
+				</when>
+			</choose>
+			<choose>
+				<when test="searchKeyword != null and searchKeyword != ''">
+					AND Y.YIMDO_NAME LIKE CONCAT('%', #{searchKeyword}, '%')
+				</when>
+			</choose>
+		</where>
+	</select>
+	
+	<select id="getBreakerById" resultMap="BreakerInfoVoMap">
+		SELECT 
+			B.BREAKER_ID AS BREAKER_ID,
+			B.BREAKER_IP AS BREAKER_IP,
+			B.YIMDO_CODE AS YIMDO_CODE,
+			Y.YIMDO_NAME AS YIMDO_NAME,
+			B.BREAKER_POLICY_CODE AS BREAKER_POLICY_CODE,
+			P.BREAKER_POLICY_NAME AS BREAKER_POLICY_NAME,
+			B.MODIFIER AS MODIFIER,
+			DATE_FORMAT(B.MODIFY_DATE, '%Y-%m-%d %H:%i:%s') AS MODIFY_DATE,
+			B.ELEMENT_CODE AS ELEMENT_CODE,
+			E.ELEMENT_NAME AS ELEMENT_NAME,
+			B.MODIFY_DETAIL AS MODIFY_DETAIL,
+			B.BREAKER_STATUS_CODE AS BREAKER_STATUS_CODE,
+			S.BREAKER_STATUS_NAME AS BREAKER_STATUS_NAME,
+			B.BREAKER_STATUS_MOD_DATE AS BREAKER_STATUS_MOD_DATE,
+			B.SYSTEM_CONTROL AS SYSTEM_CONTROL
+		FROM 
+			BREAKER_INFO AS B
+			JOIN YIMDO_INFO AS Y ON B.YIMDO_CODE = Y.YIMDO_CODE
+			JOIN BREAKER_POLICY AS P ON B.BREAKER_POLICY_CODE = P.BREAKER_POLICY_CODE
+			JOIN ELEMENT_INFO AS E ON B.ELEMENT_CODE = E.ELEMENT_CODE
+			JOIN BREAKER_STATUS AS S ON B.BREAKER_STATUS_CODE = S.BREAKER_STATUS_CODE
+		WHERE
+			B.BREAKER_ID = #{breakerId}
+	</select>
+	
+	<select id="getAllBreakerList" resultMap="BreakerInfoVoMap">
+		SELECT 
+			B.BREAKER_ID AS BREAKER_ID,
+			B.BREAKER_IP AS BREAKER_IP,
+			B.YIMDO_CODE AS YIMDO_CODE,
+			Y.YIMDO_NAME AS YIMDO_NAME,
+			B.BREAKER_POLICY_CODE AS BREAKER_POLICY_CODE,
+			P.BREAKER_POLICY_NAME AS BREAKER_POLICY_NAME,
+			B.MODIFIER AS MODIFIER,
+			DATE_FORMAT(B.MODIFY_DATE, '%Y-%m-%d %H:%i:%s') AS MODIFY_DATE,
+			B.ELEMENT_CODE AS ELEMENT_CODE,
+			E.ELEMENT_NAME AS ELEMENT_NAME,
+			B.MODIFY_DETAIL AS MODIFY_DETAIL,
+			B.BREAKER_STATUS_CODE AS BREAKER_STATUS_CODE,
+			S.BREAKER_STATUS_NAME AS BREAKER_STATUS_NAME,
+			B.BREAKER_STATUS_MOD_DATE AS BREAKER_STATUS_MOD_DATE,
+			B.SYSTEM_CONTROL AS SYSTEM_CONTROL,
+			Y.YIMDO_SIDO AS YIMDO_SIDO,
+			Y.YIMDO_GUNGU AS YIMDO_GUNGU
+		FROM 
+			BREAKER_INFO AS B
+			JOIN YIMDO_INFO AS Y ON B.YIMDO_CODE = Y.YIMDO_CODE
+			JOIN BREAKER_POLICY AS P ON B.BREAKER_POLICY_CODE = P.BREAKER_POLICY_CODE
+			JOIN ELEMENT_INFO AS E ON B.ELEMENT_CODE = E.ELEMENT_CODE
+			JOIN BREAKER_STATUS AS S ON B.BREAKER_STATUS_CODE = S.BREAKER_STATUS_CODE
+	</select>
+	
+	<select id="getBreakerList" resultMap="BreakerInfoVoMap">
+		SELECT 
+			B.BREAKER_ID AS BREAKER_ID,
+			B.BREAKER_IP AS BREAKER_IP,
+			B.YIMDO_CODE AS YIMDO_CODE,
+			Y.YIMDO_NAME AS YIMDO_NAME,
+			B.BREAKER_POLICY_CODE AS BREAKER_POLICY_CODE,
+			P.BREAKER_POLICY_NAME AS BREAKER_POLICY_NAME,
+			B.MODIFIER AS MODIFIER,
+			DATE_FORMAT(B.MODIFY_DATE, '%Y-%m-%d %H:%i:%s') AS MODIFY_DATE,
+			B.ELEMENT_CODE AS ELEMENT_CODE,
+			E.ELEMENT_NAME AS ELEMENT_NAME,
+			B.MODIFY_DETAIL AS MODIFY_DETAIL,
+			B.BREAKER_STATUS_CODE AS BREAKER_STATUS_CODE,
+			S.BREAKER_STATUS_NAME AS BREAKER_STATUS_NAME,
+			B.BREAKER_STATUS_MOD_DATE AS BREAKER_STATUS_MOD_DATE,
+			B.SYSTEM_CONTROL AS SYSTEM_CONTROL
+		FROM 
+			BREAKER_INFO AS B
+			JOIN YIMDO_INFO AS Y ON B.YIMDO_CODE = Y.YIMDO_CODE
+			JOIN BREAKER_POLICY AS P ON B.BREAKER_POLICY_CODE = P.BREAKER_POLICY_CODE
+			JOIN ELEMENT_INFO AS E ON B.ELEMENT_CODE = E.ELEMENT_CODE
+			JOIN BREAKER_STATUS AS S ON B.BREAKER_STATUS_CODE = S.BREAKER_STATUS_CODE
+		<where>
+			<choose>
+				<when test="searchCondition != null and searchCondition != ''">
+					<if test="searchKeyword != null and searchKeyword != '' and searchCondition == 'breakerId'">
+						AND B.BREAKER_ID LIKE CONCAT('%', #{searchKeyword}, '%')
+					</if>
+					<if test="searchKeyword != null and searchKeyword != '' and searchCondition == 'breakerStatus'">
+						AND S.BREAKER_STATUS_NAME LIKE CONCAT('%', #{searchKeyword}, '%')
+					</if>
+					<if test="searchKeyword != null and searchKeyword != '' and searchCondition == 'modifier'">
+						AND B.MODIFIER LIKE CONCAT('%', #{searchKeyword}, '%')
+					</if>
+					<if test="searchKeyword != null and searchKeyword != '' and searchCondition == 'modifyDate'">
+						AND B.MODIFY_DATE LIKE CONCAT('%', #{searchKeyword}, '%')
+					</if>
+					<if test="searchKeyword != null and searchKeyword != '' and searchCondition == 'elementName'">
+						AND E.ELEMENT_NAME LIKE CONCAT('%', #{searchKeyword}, '%')
+					</if>
+				</when>
+				<otherwise>
+					<choose>
+						<when test="sido != null and sido != ''">
+							AND Y.YIMDO_SIDO = #{sido}
+						</when>
+					</choose>
+					<choose>
+						<when test="sigungu != null and sigungu != ''">
+							AND Y.YIMDO_GUNGU = #{sigungu}
+						</when>
+					</choose>
+					<choose>
+						<when test="yimdoCode != null and yimdoCode != '' and yimdoCode != 'noSelected'">
+							AND B.YIMDO_CODE = #{yimdoCode}
+						</when>
+					</choose>
+					<choose>
+						<when test="breakerPolicyCode != null and breakerPolicyCode != ''">
+							AND B.BREAKER_POLICY_CODE = #{breakerPolicyCode}
+						</when>
+					</choose>
+					<choose>
+						<when test="elementCode != null and elementCode != ''">
+							AND B.ELEMENT_CODE = #{elementCode}
+						</when>
+					</choose>
+					<choose>
+						<when test="searchKeyword != null and searchKeyword != ''">
+							AND 
+							(
+							B.BREAKER_ID LIKE CONCAT('%', #{searchKeyword}, '%')
+							OR S.BREAKER_STATUS_NAME LIKE CONCAT('%', #{searchKeyword}, '%')
+							OR B.MODIFIER LIKE CONCAT('%', #{searchKeyword}, '%')
+							OR B.MODIFY_DATE LIKE CONCAT('%', #{searchKeyword}, '%')
+							OR E.ELEMENT_NAME LIKE CONCAT('%', #{searchKeyword}, '%')
+							)
+						</when>
+					</choose>
+				</otherwise>
+			</choose>
+		</where>
+		ORDER BY B.BREAKER_ID ASC
+		LIMIT #{firstIndex}, #{pageUnit}
+	</select>
+	
+	<select id="getBreakerListTotalCount" resultType="int">
+		SELECT 
+			COUNT(B.BREAKER_ID)
+		FROM 
+			BREAKER_INFO AS B
+			JOIN YIMDO_INFO AS Y ON B.YIMDO_CODE = Y.YIMDO_CODE
+			JOIN BREAKER_STATUS AS S ON B.BREAKER_STATUS_CODE = S.BREAKER_STATUS_CODE
+			JOIN ELEMENT_INFO AS E ON B.ELEMENT_CODE = E.ELEMENT_CODE
+		<where>
+			<choose>
+				<when test="sido != null and sido != ''">
+					AND Y.YIMDO_SIDO = #{sido}
+				</when>
+			</choose>
+			<choose>
+				<when test="sigungu != null and sigungu != ''">
+					AND Y.YIMDO_GUNGU = #{sigungu}
+				</when>
+			</choose>
+			<choose>
+				<when test="yimdoCode != null and yimdoCode != '' and yimdoCode != 'noSelected'">
+					AND B.YIMDO_CODE = #{yimdoCode}
+				</when>
+			</choose>
+			<choose>
+				<when test="searchKeyword != null and searchKeyword != ''">
+					AND 
+					(
+					B.BREAKER_ID LIKE CONCAT('%', #{searchKeyword}, '%')
+					OR S.BREAKER_STATUS_NAME LIKE CONCAT('%', #{searchKeyword}, '%')
+					OR B.MODIFIER LIKE CONCAT('%', #{searchKeyword}, '%')
+					OR B.MODIFY_DATE LIKE CONCAT('%', #{searchKeyword}, '%')
+					OR E.ELEMENT_NAME LIKE CONCAT('%', #{searchKeyword}, '%')
+					)
+				</when>
+			</choose>
+		</where>
+	</select>
+	
+	<select id="getUsedModifyElementList" resultMap="ModifyElementVoMap">
+		SELECT
+			ELEMENT_CODE,
+			ELEMENT_NAME,
+			ELEMENT_UNIT,
+			ELEMENT_VALUE,
+			ELEMENT_USE_YN
+		FROM
+			ELEMENT_INFO
+		WHERE
+			ELEMENT_USE_YN = 'y'
+	</select>
+	
+	<select id="getModifyElementList" resultMap="ModifyElementVoMap">
+		SELECT 
+			ELEMENT_CODE,
+			ELEMENT_NAME,
+			ELEMENT_UNIT,
+			ELEMENT_VALUE,
+			ELEMENT_USE_YN
+		FROM
+			ELEMENT_INFO
+		<where>
+			<choose>
+				<when test="searchKeyword != null and searchKeyword != ''">
+					AND 
+					(
+					ELEMENT_CODE LIKE CONCAT('%', #{searchKeyword}, '%')
+					OR ELEMENT_NAME LIKE CONCAT('%', #{searchKeyword}, '%')
+					)
+				</when>
+			</choose>
+			<choose>
+				<when test="searchUseYn != null and searchUseYn != ''">
+					AND ELEMENT_USE_YN = #{searchUseYn}
+				</when>
+			</choose>
+			AND ELEMENT_CODE != '0001'
+		</where>
+		ORDER BY ELEMENT_CODE ASC
+		LIMIT #{firstIndex}, #{pageUnit}
+	</select>
+	
+	<select id="getModifyElementTotalCnt" resultType="int">
+		SELECT 
+			COUNT(ELEMENT_CODE)
+		FROM
+			ELEMENT_INFO
+		<where>
+			<choose>
+				<when test="searchKeyword != null and searchKeyword != ''">
+					AND 
+					(
+					ELEMENT_CODE LIKE CONCAT('%', #{searchKeyword}, '%')
+					OR ELEMENT_NAME LIKE CONCAT('%', #{searchKeyword}, '%')
+					)
+				</when>
+			</choose>
+			<choose>
+				<when test="searchUseYn != null and searchUseYn != ''">
+					AND ELEMENT_USE_YN = #{searchUseYn}
+				</when>
+			</choose>
+			AND ELEMENT_CODE != '0001'
+		</where>
+	</select>
+	
+</mapper>

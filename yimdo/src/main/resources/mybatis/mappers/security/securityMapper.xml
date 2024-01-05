@@ -12,6 +12,15 @@
         <result property="isCredentialsNonExpired" 	column="IS_CREDENTIALS_NON_EXPIRED"/>
         <result property="isEnabled" 				column="IS_ENABLED"/>
     </resultMap>
+
+	<resultMap id="UserDetailVoMap" type="UserDetailVo">
+        <result property="userId" 					column="USER_ID"/>
+        <result property="userNm" 					column="USER_NM"/>
+        <result property="mbtlNum" 					column="MBTLNUM"/>
+        <result property="carNumber" 				column="CAR_NUMBER"/>
+        <result property="affiliation" 				column="AFFILIATION"/>
+        <result property="email" 					column="EMAIL"/>
+    </resultMap>
 	
 	<select id="getUserByIdForLogin" resultMap="UserVoMap">
 		SELECT 
@@ -43,5 +52,19 @@
 				, #{authorityId}
 			)
 	</insert>
+	
+	<select id="getUserDetailById" resultMap="UserDetailVoMap">
+		SELECT 
+			USER_ID,
+			USER_NM,
+			MBTLNUM,
+			CAR_NUMBER,
+			AFFILIATION,
+			EMAIL
+		FROM
+			I_USER 
+		WHERE 
+			USER_ID = BINARY #{userId} 
+	</select>
 	
 </mapper>

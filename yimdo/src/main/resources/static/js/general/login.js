@@ -6,7 +6,7 @@ $(function() {
 function initEventListener() {
 
     $("#loginBtn").on("click", () => { doLogin(); });
-    $("#createAccountBtn").on("click", () => { location.href = "/createAccountPage.do"; });
+    $("#createAccountBtn").on("click", () => { location.href = "/createAccount"; });
     
     $("#loginId, #loginPasswd").keypress(function(event) {
     	

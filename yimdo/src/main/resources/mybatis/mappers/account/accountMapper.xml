@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="yimdo.web.general.account.mapper.AccountMapper">
+
+	<select id="selectAccountById" resultType="boolean">
+		SELECT EXISTS (
+		    SELECT 1
+		    FROM I_USER
+		    WHERE USER_ID = BINARY #{userId} 
+		)
+	</select>
+	
+	<insert id="createAccount" parameterType="CreateAccountVo">
+		INSERT INTO
+			I_USER
+			(
+				USER_ID
+				, PASSWORD
+				, USER_NM
+				, MBTLNUM
+				, CAR_NUMBER
+				, AFFILIATION
+				, EMAIL
+			)
+			VALUES
+			(
+				#{userId}
+				, #{password}
+				, #{userNm}
+				, #{mbtlNum}
+				, #{carNumber}
+				, #{affiliation}
+				, #{email}
+			)
+	</insert>
+	
+</mapper>

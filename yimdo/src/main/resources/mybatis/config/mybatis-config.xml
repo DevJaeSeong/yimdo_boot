@@ -3,7 +3,31 @@
 <configuration>
 
     <typeAliases>
+    
+    	<!-- security -->
         <typeAlias alias="UserVo" type="yimdo.serverConfig.security.vo.UserVo"/>
+        <typeAlias alias="UserDetailVo" type="yimdo.serverConfig.security.vo.UserDetailVo"/>
+        <typeAlias alias="CreateAccountVo" type="yimdo.web.general.account.vo.CreateAccountVo"/>
+        
+        <!-- common -->
+        <typeAlias alias="BreakerInfoVo" type="yimdo.web.common.vo.BreakerInfoVo"/>
+        <typeAlias alias="ModifyElementVo" type="yimdo.web.common.vo.ModifyElementVo"/>
+        <typeAlias alias="SidoVo" type="yimdo.web.common.vo.SidoVo"/>
+        <typeAlias alias="SigunguVo" type="yimdo.web.common.vo.SigunguVo"/>
+        <typeAlias alias="YimdoInfoVo" type="yimdo.web.common.vo.YimdoInfoVo"/>
+        
+        <!-- utill -->
+        <typeAlias alias="PagingVo" type="yimdo.web.util.paging.PagingVo"/>
+        
+        <!-- admin -->
+        <typeAlias alias="BreakerStatusVo" type="yimdo.web.admin.breakerStatus.vo.BreakerStatusVo"/>
+        <typeAlias alias="WeatherDataVo" type="yimdo.web.admin.weatherData.vo.WeatherDataVo"/>
+        
+        <!-- socketServer -->
+        <typeAlias alias="BreakerHistoryVo" type="yimdo.socketServer.vo.BreakerHistoryVo"/>
+        <typeAlias alias="SocketServerVo" type="yimdo.socketServer.vo.SocketServerVo"/>
+        
+        
     </typeAliases>
     
 </configuration>

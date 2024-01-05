@@ -1,7 +1,10 @@
 package yimdo.serverConfig.server;
 
-public class ServerConfig {
+import org.springframework.stereotype.Component;
 
+@Component
+public class ServerConfig {
+	
 	/*
 	 * 직접 지정하는 영역
 	 */
@@ -50,18 +53,21 @@ public class ServerConfig {
 	 */
 	
 	/** 정상개방 코드 */
-	public static String breakerPolicyNormalOpen = "1001";
+	public static final String BREAKER_POLICY_NORMAL_OPEN = "1001";
 	
 	/** 정상차단 코드 */
-	public static String breakerPolicyNormalClose = "1002";
+	public static final String BREAKER_POLICY_NORMAL_CLOSE = "1002";
 	
 	/** 강제개방 코드 */
-	public static String breakerPolicyEmergencyOpen = "2001";
+	public static final String BREAKER_POLICY_EMERGENCY_OPEN = "2001";
 	
 	/** 강제차단 코드 */
-	public static String breakerPolicyEmergencyClose = "2002";
+	public static final String BREAKER_POLICY_EMERGENCY_CLOSE = "2002";
 	
 	/** 고장 코드 */
-	public static String breakerPolicyError = "3001";
+	public static final String BREAKER_POLICY_ERROR = "3001";
 	
+	public static final String SYSTEM_ELEMENT_CODE = "0001";
+	public static final String SYSTEM_MODIFIER = "시스템";
+	public static final String BEACON_ELEMENT_CODE = "0003";
 }

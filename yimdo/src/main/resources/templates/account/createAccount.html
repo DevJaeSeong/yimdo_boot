@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta name="_csrf" th:content="${_csrf.token}">
+	<meta th:replace="~{/common/head :: commonMeta}">
+	<title th:replace="~{/common/head :: commonTitle}"></title>
+	<link th:replace="~{/common/head :: icon}">
+	
+	<link rel="stylesheet" th:href="@{/css/account/createAccount.css}">
+	
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+	<script defer type="text/javascript" th:src="@{/js/account/createAccount.js}"></script>
+</head>
+<body>
+    <div class="wrap">
+        <section>
+            <div id="createAccountWrapOverlay">
+                <div id="createAccountWrap">
+                    <div id="inputWrap">
+                        <div class="inputError"><span id="userIdError"></span></div>
+                        아이디<input type="text" id="userId" placeholder="guest">
+
+                        <div class="inputError"><span id="passwordError"></span></div>
+                        패스워드<input type="password" id="password" placeholder="Guest!123">
+
+                        <div class="inputError"><span id="passwordConfirmError"></span></div>
+                        패스워드확인<input type="password" id="passwordConfirm" placeholder="Guest!123">
+
+                        <div class="inputError"><span id="userNmError"></span></div>
+                        이름<input type="text" id="userNm" placeholder="홍길동">
+
+                        <div class="inputError"><span id="mbtlNumError"></span></div>
+                        휴대폰 번호<input type="tel" id="mbtlNum" placeholder="010-1234-1234">
+
+                        <div class="inputError"><span id="emailError"></span></div>
+                        이메일<input type="email" id="email" placeholder="gildong@gmail.com">
+
+                        <div class="inputError"><span id="carNumberError"></span></div>
+                        자동차 번호<input type="text" id="carNumber" placeholder="123가1234">
+
+                        <div class="inputError"><span id="affiliationError"></span></div>
+                        소속<input type="text" id="affiliation" placeholder="소속">
+
+                        <button id="createAccountBtn" style="border: solid 1px;">회원가입</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <div th:replace="~{/common/loading :: loading}"></div>
+    
+    <form id="confrimedAccountInfoForm">
+        <input type="hidden" name="userId" value="">
+        <input type="hidden" name="password" value="">
+        <input type="hidden" name="passwordConfirm" value="">
+        <input type="hidden" name="userNm" value="">
+        <input type="hidden" name="mbtlNum" value="">
+        <input type="hidden" name="email" value="">
+        <input type="hidden" name="carNumber" value="">
+        <input type="hidden" name="affiliation" value="">
+    </form>
+</body>
+</html>

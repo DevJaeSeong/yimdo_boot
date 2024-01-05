@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="yimdo.web.admin.breakerStatus.mapper.BreakerStatusMapper">
+
+	<select id="getBreakerListEachStatusCount" resultType="map">
+		SELECT 
+		    SUM(CASE WHEN B.BREAKER_STATUS_CODE = "01" THEN 1 ELSE 0 END) AS "01",
+		    SUM(CASE WHEN B.BREAKER_STATUS_CODE = "02" THEN 1 ELSE 0 END) AS "02",
+		    SUM(CASE WHEN B.BREAKER_STATUS_CODE = "03" THEN 1 ELSE 0 END) AS "03",
+		    SUM(CASE WHEN B.BREAKER_STATUS_CODE = "04" THEN 1 ELSE 0 END) AS "04",
+		    SUM(CASE WHEN B.BREAKER_STATUS_CODE = "05" THEN 1 ELSE 0 END) AS "05"
+		FROM 
+		    BREAKER_INFO AS B
+			JOIN YIMDO_INFO AS Y ON B.YIMDO_CODE = Y.YIMDO_CODE
+			JOIN BREAKER_STATUS AS S ON B.BREAKER_STATUS_CODE = S.BREAKER_STATUS_CODE
+			JOIN ELEMENT_INFO AS E ON B.ELEMENT_CODE = E.ELEMENT_CODE
+		<where>
+			<choose>
+				<when test="sido != null and sido != ''">
+					AND Y.YIMDO_SIDO = #{sido}
+				</when>
+			</choose>
+			<choose>
+				<when test="sigungu != null and sigungu != ''">
+					AND Y.YIMDO_GUNGU = #{sigungu}
+				</when>
+			</choose>
+			<choose>
+				<when test="yimdoCode != 'noSelected'">
+					AND B.YIMDO_CODE = #{yimdoCode}
+				</when>
+			</choose>
+			<choose>
+				<when test="searchKeyword != null and searchKeyword != ''">
+					AND 
+					(
+					B.BREAKER_ID LIKE CONCAT('%', #{searchKeyword}, '%')
+					OR B.MODIFIER LIKE CONCAT('%', #{searchKeyword}, '%')
+					OR B.MODIFY_DATE LIKE CONCAT('%', #{searchKeyword}, '%')
+					OR E.ELEMENT_NAME LIKE CONCAT('%', #{searchKeyword}, '%')
+					OR S.BREAKER_STATUS_NAME LIKE CONCAT('%', #{searchKeyword}, '%')
+					)
+				</when>
+			</choose>
+		</where>
+	</select>
+	
+</mapper>
