@@ -9,9 +9,6 @@ public class ServerConfig {
 	 * 직접 지정하는 영역
 	 */
 	
-	/** 서버가 작동중인지 여부 */
-	public static boolean isServerRunning = true;
-	
 	/** 서버 cpu core 개수 */
 	public static final int CPU_CORE_SIZE = 2;
 	

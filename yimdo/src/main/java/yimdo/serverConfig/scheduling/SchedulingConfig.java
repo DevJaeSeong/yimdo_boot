@@ -18,7 +18,7 @@ public class SchedulingConfig {
     	ThreadPoolTaskScheduler threadPoolTaskScheduler = new ThreadPoolTaskScheduler();
     	threadPoolTaskScheduler.setPoolSize(ServerConfig.CPU_CORE_SIZE);
     	threadPoolTaskScheduler.setWaitForTasksToCompleteOnShutdown(false);
-    	threadPoolTaskScheduler.setAwaitTerminationSeconds(1);
+    	threadPoolTaskScheduler.setAwaitTerminationSeconds(0);
     	
         return threadPoolTaskScheduler;
     }

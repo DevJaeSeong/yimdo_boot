@@ -1,6 +1,7 @@
 package yimdo.socketServer.component;
 
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -8,12 +9,9 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.Executor;
 
-import org.springframework.boot.ApplicationArguments;
-import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.task.TaskExecutor;
 import org.springframework.stereotype.Component;
 
-import jakarta.annotation.PreDestroy;
 import lombok.extern.slf4j.Slf4j;
 import yimdo.serverConfig.server.ServerConfig;
 
@@ -22,7 +20,7 @@ import yimdo.serverConfig.server.ServerConfig;
  */
 @Component
 @Slf4j
-public class SocketServer implements ApplicationRunner {
+public class SocketServer {
 	
 	private ServerSocket serverSocket;
 	private final Map<String, Socket> socketMap = SocketServerContext.getSocketMap();
@@ -41,50 +39,77 @@ public class SocketServer implements ApplicationRunner {
 		this.socketServerReceiver = socketServerReceiver;
 	}
 	
-	@Override
-	public void run(ApplicationArguments args) throws Exception {
-
-		while (ServerConfig.isServerRunning) {
-			
-			openSocket();
-		}
-	}
-	
 	/**
-	 * 소켓 서버 시작.
+	 * 서버 소켓을 개방합니다.
+	 * 
+	 * @return 성공시 true<br>
+	 * 		   실패시 false
 	 */
-    public void openSocket() {
-    	log.debug("openSocket() 시작");
+    public boolean openServerSocket() {
     	
-    	try (ServerSocket serverSocket = new ServerSocket(ServerConfig.SOCKET_PORT)) {
+    	try {
     		
-    		this.serverSocket = serverSocket;
-    		log.debug("\"{}\"포트로 서버소켓 개방", ServerConfig.SOCKET_PORT);
-    		
-    		while (!serverSocket.isClosed()) { 
-    			
-    			try (Socket socket = serverSocket.accept()) {
-					
-    				log.debug("연결된 socket: {}", socket);
-    				
-    				executor.execute(new CustomRunnable(socket)); 
-    				
-				} catch (Exception e) {
-					
-					if (Thread.interrupted()) { log.debug("해당 스레드가 block 상태에서 중지 요청이 들어왔습니다."); } 
-					else 					  { log.error("에러 발생"); e.printStackTrace(); }
-				}
-    		}
+    		log.debug("\"{}\"포트로 서버 소켓 개방.", ServerConfig.SOCKET_PORT);
+    		this.serverSocket = new ServerSocket(ServerConfig.SOCKET_PORT);
+    		return true;
     		
 		} catch (Exception e) {
 			
-			log.error("\"{}\"포트로 서버소켓 개방중 오류발생", ServerConfig.SOCKET_PORT);
+			log.error("\"{}\"포트로 서버소켓 개방중 오류발생.", ServerConfig.SOCKET_PORT);
 			e.printStackTrace();
+			
+			try {
+				
+				serverSocket.close();
+				
+			} catch (IOException e1) {
+				
+				log.error("서버 소켓 종료중 에러 발생.");
+				e1.printStackTrace();
+			}
+			
+			return false;
 		}
-    	
-    	log.debug("openSocket() 끝");
     }
 	
+    /**
+     * 소켓 통신 요청을 수신.
+     */
+    public void acceptRequest() {
+    	
+		while (!serverSocket.isClosed()) { 
+			
+			Socket socket = null;
+			
+			try {
+				
+				socket = serverSocket.accept();
+				log.debug("연결된 socket: {}", socket);
+				
+				executor.execute(new CustomRunnable(socket)); 
+				
+			} catch (Exception e) {
+				
+				if (socket != null) {
+					
+					try {
+						
+						socket.close();
+						
+					} catch (IOException e1) {
+						
+						log.error("소켓 종료중 에러 발생.");
+						e1.printStackTrace();
+					}
+				}
+				
+				
+				if (Thread.interrupted()) { log.debug("해당 스레드가 block 상태에서 중지 요청이 들어왔습니다."); } 
+				else 					  { log.error("에러 발생"); e.printStackTrace(); }
+			}
+		}
+    }
+    
 	/**
 	 * {@link TaskExecutor}의 작업내용을 정의한 {@link Runnable}의 구현체.
 	 */
@@ -175,24 +200,30 @@ public class SocketServer implements ApplicationRunner {
 	}
 	
 	/**
-	 * 서버가 종료될때 서버소켓 연결 종료.
+	 * 서버 소켓을 종료.
 	 */
-	@PreDestroy
-	private void closeSocket() {
+	public void closeServerSocket() {
 		
-		ServerConfig.isServerRunning = false;
+		if (serverSocket == null) {
+			
+			log.debug("연결된 서버 소켓이 없습니다.");
+			return;
+		}
+		
+		if (serverSocket.isClosed()) {
+			
+			log.debug("서버 소켓이 이미 종료되었습니다.");
+			return;
+		}
 		
 		try {
 			
-			if (serverSocket != null) {
-				
-				serverSocket.close();
-				log.debug("서버소켓 연결 종료.");
-			}
+			serverSocket.close();
+			log.debug("서버 소켓 연결 종료.");
 			
 		} catch (Exception e) {
 			
-			log.error("서버소켓 종료 실패.");
+			log.error("서버 소켓 종료 실패.");
 			e.printStackTrace();
 		}
 	}
