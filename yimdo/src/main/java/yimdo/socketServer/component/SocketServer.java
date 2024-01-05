@@ -110,9 +110,6 @@ public class SocketServer {
 		}
     }
     
-	/**
-	 * {@link TaskExecutor}의 작업내용을 정의한 {@link Runnable}의 구현체.
-	 */
 	private class CustomRunnable implements Runnable {
 
 		private Socket socket;
