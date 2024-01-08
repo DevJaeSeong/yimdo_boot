@@ -13,6 +13,7 @@
 	<link rel="stylesheet" th:href="@{/css/admin/css/jquery-ui.css}">
 	
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+	<script type="text/javascript" th:src="@{/js/common/jquery.bpopup.min.js}" defer></script>
 	<script type="text/javascript" th:src="@{/js/admin/breakerStatus.js}" defer></script>
 </head>
 <body class="admin_company">
@@ -29,7 +30,6 @@
 	            <div class="side_content" tabindex="-1">
 	                <!-- S : content_doc -->
 	                <div class="content_doc">
-	
 	
 	                    <!-- S : sub_head -->
 	                    <div class="sub_head">
@@ -59,6 +59,7 @@
 	                        </ul>
 	                    </div>
 	                    <!-- E : section_01 -->
+	                    
 	                    <!-- S : table_typA_02 -->
 	                    <div class="table_typA_02 mt30 mb30">
 	                         <!-- S : sarchTxpa_box -->
@@ -265,28 +266,6 @@
 	        <!-- E : sec_container -->
 	    </div>
 	    <!-- E : admi_section -->
-	    <!-- S : 레이어팝업 -->
-	    <div id="popup_1" class="popup_wrap">
-	        <div class="title_pop">
-	            <h2>차단기 상세정보</h2>
-	            <button type="button" class="btn-close " tabindex="0" title="창닫기"><span
-	                    class="blind">창닫기</span></button>
-	        </div>
-	        <div class="pop_doc">
-	            <div class="pop_doc_box">
-	                상세내용 출력됨
-	            </div>
-	            <!-- small버튼 A테그 -->
-	            <div class="btn_popgroup_wrap mt10">
-	                <div class="btn_g_right">
-	                    <a href="#none" class="btn_a_small_03"><span>취소</span></a>
-	                    <a href="#none" class="btn_a_small_01"><span>확인</span></a>
-	                </div>
-	            </div>
-	            <!-- small버튼 A -->
-	        </div>
-	    </div>
-	    <!-- E : 레이어팝업 -->
 	
 	    <!-- S : 레이어팝업 -->
 	    <div id="popup_2" class="popup_wrap" style="width: 600px; height: 770px;">

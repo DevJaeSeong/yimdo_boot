@@ -1,10 +1,13 @@
 package yimdo.web.util.paging;
 
 import lombok.Data;
+import yimdo.serverConfig.server.ServerConfig;
 
 @Data
 public class PagingVo {
 
+	private PaginationInfo paginationInfo;
+	
 	private String searchCondition = "";
 
 	/** 검색Keyword */
@@ -17,10 +20,10 @@ public class PagingVo {
 	private int pageIndex = 1;
 
 	/** 페이지갯수 */
-	private int pageUnit = 10;
+	private int pageUnit = ServerConfig.PAGE_UNIT;
 
 	/** 페이지사이즈 */
-	private int pageSize = 10;
+	private int pageSize = ServerConfig.PAGE_SIZE;
 
 	/** firstIndex */
 	private int firstIndex = 1;
@@ -60,4 +63,16 @@ public class PagingVo {
 	
 	/** 상태인자코드 */
 	private String purposeEntryCode = "";
+	
+	public void setPaginationInfo(int totalCount) {
+		
+		PaginationInfo paginationInfo = new PaginationInfo();
+		
+		paginationInfo.setCurrentPageNo(pageIndex);
+		paginationInfo.setRecordCountPerPage(pageUnit);
+		paginationInfo.setPageSize(pageSize);
+		paginationInfo.setTotalRecordCount(totalCount);
+		
+		this.paginationInfo = paginationInfo;
+	}
 }

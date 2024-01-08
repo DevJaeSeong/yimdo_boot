@@ -7,9 +7,8 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Map;
 import java.util.Set;
-import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
 
-import org.springframework.core.task.TaskExecutor;
 import org.springframework.stereotype.Component;
 
 import lombok.extern.slf4j.Slf4j;
@@ -26,15 +25,15 @@ public class SocketServer {
 	private final Map<String, Socket> socketMap = SocketServerContext.getSocketMap();
 	private final Set<String> runningBreakers = SocketServerContext.getRunningBreakers();
 	
-	private Executor executor;
+	private ExecutorService executorService;
 	private SocketServerUtil socketServerUtil;
 	private SocketServerReceiver socketServerReceiver;
 	
-	public SocketServer(Executor executor,
+	public SocketServer(ExecutorService executorService,
 						SocketServerUtil socketServerUtil,
 						SocketServerReceiver socketServerReceiver) {
 		
-		this.executor = executor;
+		this.executorService = executorService;
 		this.socketServerUtil = socketServerUtil;
 		this.socketServerReceiver = socketServerReceiver;
 	}
@@ -86,7 +85,7 @@ public class SocketServer {
 				socket = serverSocket.accept();
 				log.debug("연결된 socket: {}", socket);
 				
-				executor.execute(new CustomRunnable(socket)); 
+				executorService.execute(new SocketRunnable(socket)); 
 				
 			} catch (Exception e) {
 				
@@ -110,11 +109,11 @@ public class SocketServer {
 		}
     }
     
-	private class CustomRunnable implements Runnable {
+	private class SocketRunnable implements Runnable {
 
 		private Socket socket;
 		
-		public CustomRunnable(Socket socket) {
+		public SocketRunnable(Socket socket) {
 			
 			this.socket = socket;
 		}

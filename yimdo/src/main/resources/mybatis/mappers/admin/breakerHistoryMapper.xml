@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="yimdo.web.admin.breakerHistory.mapper.BreakerHistoryMapper">
+
+	<resultMap id="BreakerHistoryVoMap" type="BreakerHistoryVo">
+		<result property="breakerHistoryId" 	column="BREAKER_HISTORY_ID"/>
+		<result property="yimdoCode" 			column="YIMDO_CODE"/>
+		<result property="yimdoName" 			column="YIMDO_NAME"/>
+		<result property="breakerId" 			column="BREAKER_ID"/>
+		<result property="breakerPolicyCode" 	column="BREAKER_POLICY_CODE"/>
+		<result property="breakerPolicyName" 	column="BREAKER_POLICY_NAME"/>
+		<result property="modifyReqDate" 		column="MODIFY_REQ_DATE"/>
+		<result property="modifyReciveDate" 	column="MODIFY_RECIVE_DATE"/>
+		<result property="modifyResDate" 		column="MODIFY_RES_DATE"/>
+		<result property="modifier" 			column="MODIFIER"/>
+		<result property="elementCode" 			column="ELEMENT_CODE"/>
+		<result property="elementName" 			column="ELEMENT_NAME"/>
+		<result property="modifyDetail" 		column="MODIFY_DETAIL"/>
+	</resultMap>
+
+	<select id="getBreakerHistoryListCount" parameterType="PagingVo" resultType="int">
+		SELECT 
+			COUNT(H.BREAKER_ID)
+		FROM
+			BREAKER_HISTORY AS H
+			JOIN BREAKER_INFO AS B ON H.BREAKER_ID = B.BREAKER_ID
+			JOIN YIMDO_INFO AS Y ON B.YIMDO_CODE = Y.YIMDO_CODE
+			JOIN BREAKER_POLICY AS P ON H.BREAKER_POLICY_CODE = P.BREAKER_POLICY_CODE
+			JOIN ELEMENT_INFO AS E ON H.ELEMENT_CODE = E.ELEMENT_CODE
+		WHERE 1=1
+			<if test="sido != null and sido != ''">
+				AND Y.YIMDO_SIDO = #{sido}
+			</if>
+			<if test="sigungu != null and sigungu != ''">
+				AND Y.YIMDO_GUNGU = #{sigungu}
+			</if>
+			<if test="yimdoCode != null and yimdoCode != '' and yimdoCode != 'noSelected'">
+				AND H.YIMDO_CODE = #{yimdoCode}
+			</if>
+			<if test="breakerPolicyCode != null and breakerPolicyCode != ''">
+				AND H.BREAKER_POLICY_CODE = #{breakerPolicyCode}
+			</if>
+			<if test="elementCode != null and elementCode != ''">
+				AND H.ELEMENT_CODE = #{elementCode}
+			</if>
+			<if test="dateStar != null and dateStar != ''">
+				AND H.MODIFY_REQ_DATE >= #{dateStar}
+			</if>
+			<if test="dateEnd != null and dateEnd != ''">
+				<![CDATA[AND H.MODIFY_REQ_DATE <= #{dateEnd}]]>
+			</if>
+			<if test="searchKeyword != null and searchKeyword != ''">
+				AND 
+				(
+				H.BREAKER_ID LIKE CONCAT('%', #{searchKeyword}, '%')
+				OR H.MODIFIER LIKE CONCAT('%', #{searchKeyword}, '%')
+				OR E.ELEMENT_NAME LIKE CONCAT('%', #{searchKeyword}, '%')
+				)
+			</if>
+	</select>
+
+	<select id="getBreakerHistoryList" parameterType="PagingVo" resultType="BreakerHistoryVo">
+		SELECT 
+			H.BREAKER_ID AS breakerId,
+			Y.YIMDO_CODE AS yimdoCode,
+			Y.YIMDO_NAME AS yimdoName,
+			H.BREAKER_POLICY_CODE AS breakerPolicyCode,
+			P.BREAKER_POLICY_NAME AS breakerPolicyName,
+			H.MODIFIER AS modifier,
+			DATE_FORMAT(H.MODIFY_REQ_DATE, '%Y-%m-%d %H:%i:%s') AS modifyReqDate,
+			DATE_FORMAT(H.MODIFY_RES_DATE, '%Y-%m-%d %H:%i:%s') AS modifyResDate,
+			H.ELEMENT_CODE AS elementCode,
+			E.ELEMENT_NAME AS elementName,
+			H.MODIFY_DETAIL AS modifyDetail
+		FROM
+			BREAKER_HISTORY AS H
+			JOIN BREAKER_INFO AS B ON H.BREAKER_ID = B.BREAKER_ID
+			JOIN YIMDO_INFO AS Y ON B.YIMDO_CODE = Y.YIMDO_CODE
+			JOIN BREAKER_POLICY AS P ON H.BREAKER_POLICY_CODE = P.BREAKER_POLICY_CODE
+			JOIN ELEMENT_INFO AS E ON H.ELEMENT_CODE = E.ELEMENT_CODE
+		WHERE 1=1
+			<if test="sido != null and sido != ''">
+				AND Y.YIMDO_SIDO = #{sido}
+			</if>
+			<if test="sigungu != null and sigungu != ''">
+				AND Y.YIMDO_GUNGU = #{sigungu}
+			</if>
+			<if test="breakerPolicyCode != null and breakerPolicyCode != ''">
+				AND H.BREAKER_POLICY_CODE = #{breakerPolicyCode}
+			</if>
+			<if test="elementCode != null and elementCode != ''">
+				AND H.ELEMENT_CODE = #{elementCode}
+			</if>
+			<if test="dateStar != null and dateStar != ''">
+				AND H.MODIFY_REQ_DATE >= #{dateStar}
+			</if>
+			<if test="dateEnd != null and dateEnd != ''">
+				<![CDATA[AND H.MODIFY_REQ_DATE <= #{dateEnd}]]>
+			</if>
+			<if test="searchKeyword != null and searchKeyword != ''">
+				AND 
+				(
+				H.BREAKER_ID LIKE CONCAT('%', #{searchKeyword}, '%')
+				OR H.MODIFIER LIKE CONCAT('%', #{searchKeyword}, '%')
+				OR E.ELEMENT_NAME LIKE CONCAT('%', #{searchKeyword}, '%')
+				)
+			</if>
+			ORDER BY H.MODIFY_REQ_DATE DESC
+			LIMIT #{paginationInfo.firstRecordIndex}, #{paginationInfo.recordCountPerPage}	
+	</select>
+	
+</mapper>

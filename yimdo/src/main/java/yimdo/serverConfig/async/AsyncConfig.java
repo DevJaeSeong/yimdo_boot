@@ -1,6 +1,5 @@
 package yimdo.serverConfig.async;
 
-import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -16,10 +15,16 @@ import org.springframework.scheduling.annotation.EnableAsync;
 public class AsyncConfig {
 
 	@Bean
-	public Executor executor() {
+	public ExecutorService executorService() {
 		
-		ExecutorService executorService = Executors.newVirtualThreadPerTaskExecutor();	// java21 추가된 가상스레드
-		//ThreadPoolTaskExecutor threadPoolTaskExecutor = new ThreadPoolTaskExecutor();	// spring 멀티스레드
+		/* 기존 spring에서 제공하는 스레드 풀 구현체
+		ThreadPoolTaskExecutor threadPoolTaskExecutor = new ThreadPoolTaskExecutor();
+		threadPoolTaskExecutor.initialize();
+		ExecutorService executorService = (ExecutorService) threadPoolTaskExecutor;
+		*/
+		
+		// java 21 추가된 가상스레드
+		ExecutorService executorService = Executors.newVirtualThreadPerTaskExecutor();
 		
 		return executorService;
 	}

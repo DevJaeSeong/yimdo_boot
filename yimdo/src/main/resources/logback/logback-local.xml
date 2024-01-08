@@ -5,7 +5,7 @@
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
 		<layout class="ch.qos.logback.classic.PatternLayout">
 		
-			<Pattern>%d{HH:mm:ss} %-5p [%-17t] [%-4L] %-37c{0} - %-32M : %m%n</Pattern>
+			<Pattern>%d{HH:mm:ss} %-5p [%-18t] [%-4L] %-37c{0} - %-32M : %m%n</Pattern>
 			<!--  
 			<Pattern>%d{HH:mm:ss} %-5p [%t] [%-4L] %-80c - %-32M : %m%n</Pattern>
 			-->

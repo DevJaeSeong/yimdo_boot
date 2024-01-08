@@ -3,7 +3,7 @@ package yimdo.serverConfig.security;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
-import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
 
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
@@ -42,13 +42,13 @@ public class WebSecurityConfig {
 
 	private final SecurityMapper securityMapper;
 	private final AesEncrypter aesEncrypter;
-	private final Executor executor;
+	private final ExecutorService executorService;
 	
-	public WebSecurityConfig(SecurityMapper securityMapper, AesEncrypter aesEncrypter, Executor executor) {
+	public WebSecurityConfig(SecurityMapper securityMapper, AesEncrypter aesEncrypter, ExecutorService executorService) {
 		
 		this.securityMapper = securityMapper;
 		this.aesEncrypter = aesEncrypter;
-		this.executor = executor;
+		this.executorService = executorService;
 	}
 
 	@Bean
@@ -66,7 +66,7 @@ public class WebSecurityConfig {
 		 *       이를 해결하려면 그러므로 SecurityFilterChain에 종속시킬 필터는
 		 *       빈으로 등록하지 않아야 한다.
 		 */
-		http.addFilterAfter(new RequestPrintFilter(executor), CsrfFilter.class)
+		http.addFilterAfter(new RequestPrintFilter(executorService), CsrfFilter.class)
 			.addFilterAfter(new CustomFilter(aesEncrypter), AnonymousAuthenticationFilter.class);
 		
 		

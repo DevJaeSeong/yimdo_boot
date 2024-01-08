@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta name="_csrf" th:content="${_csrf.token}">
+	<meta th:replace="~{/common/head :: commonMeta}">
+	<title th:replace="~{/common/head :: adminTitle}"></title>
+	<link th:replace="~{/common/head :: icon}">
+	
+	<link rel="stylesheet" th:href="@{/css/admin/css/reset.css}">
+	<link rel="stylesheet" th:href="@{/css/admin/css/common.css}">
+	<link rel="stylesheet" th:href="@{/css/admin/css/content.css}">
+	<link rel="stylesheet" th:href="@{/css/admin/css/fonts.css}">
+	<link rel="stylesheet" th:href="@{/css/admin/css/jquery-ui.css}">
+	
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+	<script type="text/javascript" th:src="@{/js/common/jquery.bpopup.min.js}" defer></script>
+	<script type="text/javascript" th:src="@{/js/admin/breakerHistory.js}" defer></script>
+</head>
+<body class="admin_company">
+	<div class="wrap">
+	
+		<div th:replace="~{/common/header :: adminHeader}"></div>
+		
+        <!-- S : admi_section -->
+        <div class="admi_section">
+            <!-- S : sec_container -->
+            <div class="sec_container">
+
+                <!-- S : side_content -->
+                <div class="side_content" tabindex="-1">
+                    <!-- S : content_doc -->
+                    <div class="content_doc">
+
+
+                        <!-- S : sub_head -->
+                        <div class="sub_head">
+                            <div class="loacation_area">
+                                <ol>
+                                    <li><a href="/" class="home"><span class="screen_out">Home</span></a></li>
+                                    <li><span><strong>차단기관리이력</strong></span></li>
+                                </ol>
+                            </div>
+                            <h2 class="titlesb">차단기관리이력</h2>
+                        </div>
+                        <!-- E : sub_head -->
+
+
+                        <!-- S : content_area -->
+                        <div class="content_area mt15">
+                            <!-- S : sarchTxpa_box -->
+                            <div class="sarchTxpa_box">
+                                <div id="breakerTotalCount" class="pacount">
+                                </div>
+                                <!--
+                                <div class="srcR_box ">
+                                    <input type="text" class="form wp65 " title="입력하세요">
+                                    <a href="#none" class="btn_list_src"><span>조회</span></a>
+                                </div>
+                                -->
+                            </div>
+                            <!-- E : sarchTxpa_box -->
+                            <!-- S : table_typA -->
+                            <div class="table_typA">
+                                <table class="contTbl txtC" summary="이 표는 목록입니다.">
+                                    <colgroup>
+                                        <col style="width:15%">
+                                        <col style="width:35%">
+                                        <col style="width:15%">
+                                        <col style="width:35%">
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="col">임도선택</th>
+                                            <td>
+                                                <div class="tb_city" data-label="시/도">
+                                                    <select id="sido" title="시/도" onchange="fetch_getSigungu(); return false;">
+                                                        <option value="">시/도 선택</option>
+                                                    </select>
+                                                </div>
+                                                <div class="tb_city" data-label="시/군/구">
+                                                    <select id="sigungu" title="시/군/구">
+                                                        <option value="">시/군/구 선택</option>
+                                                    </select>
+                                                </div>
+                                            </td>
+                                            <th scope="col">차단기ID</th>
+                                            <td class="tbtdL"><input type="text" id="breakerSearchInput" class="form wp100"></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="col">정책구분</th>
+                                            <td class="pt20 pb20">
+                                                <ul class="radio">
+                                                    <li>
+                                                        <input type="radio" value="1002" id="date_area6" name="date_area" class="policyRadio" >
+                                                        <label for="date_area6"><span>정상차단</span></label>
+                                                    </li>
+                                                    <li>
+                                                        <input type="radio" value="1001" id="date_area7" name="date_area" class="policyRadio" >
+                                                        <label for="date_area7"><span>정상개방</span></label>
+                                                    </li>
+                                                    <li>
+                                                        <input type="radio" value="2002" id="date_area8" name="date_area" class="policyRadio" >
+                                                        <label for="date_area8"><span>강제차단</span></label>
+                                                    </li>
+                                                    <li>
+                                                        <input type="radio" value="2001" id="date_area9" name="date_area" class="policyRadio" >
+                                                        <label for="date_area9"><span>강제개방</span></label>
+                                                    </li>
+                                                </ul>
+                                            </td>
+                                            <th scope="col">정책변경인자</th>
+                                            <td>
+                                            	<input type="hidden" id="selectedElement">
+                                                <input type="text" id="selectedElementName" class="form wp85 " disabled>
+                                                <button type="button" class="btn_addsq " id="elementListViewBtn" onclick="fetch_getElementList(); return false;"><span>조회</span></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="col">변경기간</th>
+                                            <td colspan="3" class="txtL pl40">
+                                                <div class="tb_date">
+                                                    <!-- 달력 마감일 데이터값 -->
+                                                    <input type="text" id="dateStar" class="tb_inp inp_date" placeholder="시작일" title="시작년월일을 입력합니다. YYYYMMDD형식으로 입력하세요.">
+                                                    <input type="text" id="dateEnd" class="tb_inp inp_date" placeholder="마감일" title="마감년월일을 입력합니다. YYYYMMDD형식으로 입력하세요.">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- E : table_typA -->
+                            <!-- S : btn_center -->
+                            <div class="mt20 mb30 btn_center">
+                                <a href="#none" class="btn_list_src mr10" onclick="reset(); return false;"><span>초기화</span></a>
+                                <a href="#none" class="btn_list_src" onclick="fetch_getBreakerHistoryList(); return false;"><span>조회</span></a>
+                            </div>
+                            <!-- E : btn_center -->
+                            <!-- S : table_typA -->
+                            <div class="table_typA">
+                                <table class="contTbl txtC" summary="이 표는 목록입니다.">
+                                    <colgroup>
+                                        <col style="width:8%">
+                                        <col style="width:10%">
+                                        <col style="width:10%">
+                                        <col style="width:12%">
+                                        <col style="width:12%">
+                                        <col style="width:10%">
+                                        <col style="width:10%">
+                                        <col style="width:30%">
+                                    </colgroup>
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">임도명</th>
+                                            <th scope="col">차단기ID</th>
+                                            <th scope="col">차단기정책</th>
+                                            <th scope="col">정책변경요청시간</th>
+                                            <th scope="col">정책변경반영시간</th>
+                                            <th scope="col">변경자</th>
+                                            <th scope="col">정책변경인자</th>
+                                            <th scope="col">정책변경사유</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="breakerList">
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- E : table_typA -->
+
+                            <!-- S : paging_wrap -->
+                            <div id="breakerListPaging" class="paging_wrap mt15 mb15">
+                            </div>
+                            <!-- E : paging_wrap -->
+                        </div>
+                        <!-- E : content_area -->
+
+                    </div>
+                    <!-- E : content_doc -->
+                </div>
+                <!-- E : side_content -->
+
+            </div>
+            <!-- E : sec_container -->
+        </div>
+        <!-- E : admi_section -->
+		
+	    <div th:replace="~{/common/footer :: adminFooter}"></div>
+		<div th:replace="~{/common/loading :: loading}"></div>
+	</div>
+
+	<div id="popup_2" class="popup_wrap" style="width: 600px; height: 770px;">
+	    <div class="title_pop">
+	        <h2>상태변경인자 목록</h2>
+	        <button type="button" class="btn-close " tabindex="0" title="창닫기"><span class="blind">창닫기</span></button>
+	    </div>
+	    <div class="pop_doc">
+	        <div class="content_area mt15">
+			<!-- S : sarchTxpa_box -->    
+				<div class="sarchTxpa_box">
+			    	<div class="pacount">
+			    		<span id="element_totalCnt" class="data_num">총 <strong>?</strong>건의 게시물이 있습니다. <em>(?페이지)</em></span>
+					</div>
+					<div class="srcR_box ">
+					    <input type="text" id="elementSearch" class="form wp65 " title="입력하세요" placeholder="상태변경인자">
+					    <a class="btn_list_src" onclick="fetch_getElementList();" style="cursor: pointer;"><span>조회</span></a>
+					    </div>
+					</div>
+				<!-- E : sarchTxpa_box -->    
+				<!-- S : table_typA -->    
+				<div class="table_typA">
+					<input type="hidden" id="selectedId" value="">
+					<table class="contTbl txtC" summary="이 표는 목록입니다." >
+						<colgroup>
+							<col width="85%"/>
+							<col width="15%"/>
+						</colgroup>
+						<thead>
+							<tr>
+								<th>상태변경인자</th>
+								<th>선택</th>
+							</tr>
+						</thead>
+						<tbody id="pop_elementList">
+						
+						</tbody>
+					</table>
+				</div>			                
+				<!-- E : table_typA -->    
+				<!-- S : paging_wrap -->
+				<div id="pop_pageBtn" class="paging_wrap mt15 mb15">
+				</div>
+			<!-- E : paging_wrap -->
+			</div>
+	        <!-- small버튼 A테그 -->
+	        <div class="btn_popgroup_wrap mt10">
+	        <div class="btn_g_right">
+	        	<!-- 
+	        	<a href="/breakerManagementPage.do" class="btn_a_small_03"><span>창닫기</span></a>
+	        	 -->
+	        </div>
+	        </div>
+	        <!-- small버튼 A -->
+	    </div>
+	</div>
+
+</body>
+</html>

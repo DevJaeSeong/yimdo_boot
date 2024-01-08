@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
 
 import org.springframework.util.StreamUtils;
 
@@ -20,14 +20,14 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class CustomHttpServletRequestWrapper extends HttpServletRequestWrapper {
 
-	private final Executor executor;
+	private final ExecutorService executorService;
 	private final byte[] requestData;
 
-	public CustomHttpServletRequestWrapper(HttpServletRequest request, Executor executor) throws IOException {
+	public CustomHttpServletRequestWrapper(HttpServletRequest request, ExecutorService executorService) throws IOException {
 
 		super(request);
 		this.requestData = StreamUtils.copyToByteArray(request.getInputStream());
-		this.executor = executor;
+		this.executorService = executorService;
 	}
 
 	@Override
@@ -59,7 +59,7 @@ public class CustomHttpServletRequestWrapper extends HttpServletRequestWrapper {
 			public void setReadListener(ReadListener readListener) {
 				
                 // 비동기 작업을 수행하는 경우, executor를 사용하여 비동기적으로 데이터를 읽어올 수 있도록 처리
-                executor.execute(() -> {
+                executorService.execute(() -> {
                 	
                     try {
                     	

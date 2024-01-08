@@ -12,9 +12,6 @@ public class ServerConfig {
 	/** 서버 cpu core 개수 */
 	public static final int CPU_CORE_SIZE = 2;
 	
-	/** globals.properties 파일 위치 */
-	public static final String GLOBALS_PROPERTIES_RESOURCE_PATH = "egovframework/egovProps/globals.properties";
-	
 	/** 프로토콜 식별자 */
 	public static final byte PROTOCAL_ID = (byte) 0xAB;
 	

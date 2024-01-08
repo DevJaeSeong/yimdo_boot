@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.Enumeration;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
 
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -22,18 +22,18 @@ import yimdo.serverConfig.security.vo.CustomUser;
 @Slf4j
 public class RequestPrintFilter extends OncePerRequestFilter {
 
-	private final Executor executor;
+	private final ExecutorService executorService;
 	
-	public RequestPrintFilter(Executor executor) {
+	public RequestPrintFilter(ExecutorService executorService) {
 		
-		this.executor = executor;
+		this.executorService = executorService;
 	}
 	
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
 			throws ServletException, IOException {
         
-		request = new CustomHttpServletRequestWrapper(request, executor);
+		request = new CustomHttpServletRequestWrapper(request, executorService);
 		
 		printRequest((CustomHttpServletRequestWrapper) request);
 		

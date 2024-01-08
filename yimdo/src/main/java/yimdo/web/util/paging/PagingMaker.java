@@ -5,8 +5,6 @@ import java.util.Map;
 
 import org.springframework.stereotype.Component;
 
-import yimdo.serverConfig.server.ServerConfig;
-
 /**
  * 페이징 처리에 필요한 요소를 처리해주는 
  */
@@ -20,9 +18,6 @@ public class PagingMaker {
 	 * @return new HashMap("paginationInfo": {@link PaginationInfo}, "pagingVo": {@link PagingVo})
 	 */
 	public Map<String, Object> pagingMake(PagingVo pagingVo, int totalCount) {
-		
-		pagingVo.setPageUnit(ServerConfig.PAGE_UNIT);
-		pagingVo.setPageSize(ServerConfig.PAGE_SIZE);
 		
 		PaginationInfo paginationInfo = new PaginationInfo();
 		paginationInfo.setCurrentPageNo(pagingVo.getPageIndex()); 		//현재 페이지 번호

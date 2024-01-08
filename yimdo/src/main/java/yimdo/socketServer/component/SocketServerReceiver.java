@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
 
 import org.springframework.stereotype.Component;
 
@@ -31,19 +31,19 @@ public class SocketServerReceiver {
 	private SocketServerMapper socketServerMapper;
 	private SocketServerUtil socketServerUtil;
 	private BreakerController breakerController;
-	private Executor executor;
+	private ExecutorService executorService;
 	private SocketServerSender socketServerSender;
 	
 	public SocketServerReceiver(SocketServerMapper socketServerMapper
 								, SocketServerUtil socketServerUtil
 								, BreakerController breakerController
-								, Executor executor
+								, ExecutorService executorService
 								, SocketServerSender socketServerSender) {
 		
 		this.socketServerMapper = socketServerMapper;
 		this.socketServerUtil = socketServerUtil;
 		this.breakerController = breakerController;
-		this.executor = executor;
+		this.executorService = executorService;
 		this.socketServerSender = socketServerSender;
 	}
 	
@@ -383,7 +383,7 @@ public class SocketServerReceiver {
 		if (carDetectionBreakers.contains(breakerId)) 
 			return;
 		
-		executor.execute(() -> {
+		executorService.execute(() -> {
 			
 			try {
 				

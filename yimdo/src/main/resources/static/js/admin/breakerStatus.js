@@ -1,8 +1,29 @@
 $(function() {
 	
+	init();
 	fetch_getSido();
 	fetch_getYimdoList();
 })
+
+function init() {
+	
+    // 버튼 클릭 시 색 변경
+    $('table tr').mouseover(function () {
+		
+        $(this).css("backgroundColor", "#faf8f1");
+    });
+
+    $('table tr').mouseout(function () {
+		
+        $(this).css("backgroundColor", "#fff");
+    });
+    
+    $('#elementList_btn').bind('click', function (e) {
+		
+        e.preventDefault();
+        $('#popup_2').bPopup();
+    });
+}
 
 function fetch_getSido() {
 	
@@ -436,7 +457,7 @@ function fetch_updateBreakerStatus() {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
-			"${_csrf.headerName}": "${_csrf.token}"
+			'X-CSRF-TOKEN': $("meta[name='_csrf']").attr("content")
 		},
 		body: JSON.stringify(msg)
 	})
