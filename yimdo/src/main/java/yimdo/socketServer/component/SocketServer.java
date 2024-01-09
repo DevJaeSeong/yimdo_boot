@@ -7,7 +7,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Map;
 import java.util.Set;
-import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executor;
 
 import org.springframework.stereotype.Component;
 
@@ -25,15 +25,15 @@ public class SocketServer {
 	private final Map<String, Socket> socketMap = SocketServerContext.getSocketMap();
 	private final Set<String> runningBreakers = SocketServerContext.getRunningBreakers();
 	
-	private ExecutorService executorService;
+	private Executor executor;
 	private SocketServerUtil socketServerUtil;
 	private SocketServerReceiver socketServerReceiver;
 	
-	public SocketServer(ExecutorService executorService,
+	public SocketServer(Executor executor,
 						SocketServerUtil socketServerUtil,
 						SocketServerReceiver socketServerReceiver) {
 		
-		this.executorService = executorService;
+		this.executor = executor;
 		this.socketServerUtil = socketServerUtil;
 		this.socketServerReceiver = socketServerReceiver;
 	}
@@ -78,33 +78,17 @@ public class SocketServer {
     	
 		while (!serverSocket.isClosed()) { 
 			
-			Socket socket = null;
-			
-			try {
+			try (Socket socket = serverSocket.accept()) {
 				
-				socket = serverSocket.accept();
-				log.debug("연결된 socket: {}", socket);
-				
-				executorService.execute(new SocketRunnable(socket)); 
+				executor.execute(new SocketRunnable(socket)); 
 				
 			} catch (Exception e) {
 				
-				if (socket != null) {
+				if (!Thread.interrupted()) {
 					
-					try {
-						
-						socket.close();
-						
-					} catch (IOException e1) {
-						
-						log.error("소켓 종료중 에러 발생.");
-						e1.printStackTrace();
-					}
+					log.error("에러 발생"); 
+					e.printStackTrace();
 				}
-				
-				
-				if (Thread.interrupted()) { log.debug("해당 스레드가 block 상태에서 중지 요청이 들어왔습니다."); } 
-				else 					  { log.error("에러 발생"); e.printStackTrace(); }
 			}
 		}
     }
@@ -116,6 +100,7 @@ public class SocketServer {
 		public SocketRunnable(Socket socket) {
 			
 			this.socket = socket;
+			log.debug("연결된 socket: {}", socket);
 		}
 		
 		@Override

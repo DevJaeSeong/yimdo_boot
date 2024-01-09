@@ -9,6 +9,7 @@ import org.apache.ftpserver.ftplet.FtpException;
 import org.apache.ftpserver.ftplet.UserManager;
 import org.apache.ftpserver.impl.DefaultFtpServer;
 import org.apache.ftpserver.listener.ListenerFactory;
+import org.apache.ftpserver.usermanager.PasswordEncryptor;
 import org.apache.ftpserver.usermanager.PropertiesUserManagerFactory;
 import org.apache.ftpserver.usermanager.SaltedPasswordEncryptor;
 import org.apache.ftpserver.usermanager.impl.BaseUser;
@@ -22,7 +23,8 @@ import yimdo.serverConfig.server.ServerConfig;
 @Slf4j
 public class FtpServerManager {
 	
-	private SaltedPasswordEncryptor saltedPasswordEncryptor = new SaltedPasswordEncryptor();
+	private PasswordEncryptor passwordEncryptor = new SaltedPasswordEncryptor();
+	private FtpServer ftpServer;
 	
 	public void openServer() {
 		
@@ -32,22 +34,18 @@ public class FtpServerManager {
 			
 			ftpServer = createFtpServer();
 			ftpServer.start();
+			this.ftpServer = ftpServer;
 			log.debug("\"{}\" 포트로 FTP 서버 시작.", ServerConfig.FTP_PORT);
 			
 			Thread.sleep(Long.MAX_VALUE);
+			
+		} catch (InterruptedException e) {
 			
 		} catch (Exception e) {
 
 			log.error("FTP 서버 문제 발생.");
 			e.printStackTrace();
-			
-		} finally {
-			
-            if (ftpServer != null && !ftpServer.isStopped()) {
-            	
-                ftpServer.stop();
-                log.debug("FTP 서버 종료.");
-            }
+			closeServer();
 		}
 	}
 
@@ -73,11 +71,11 @@ public class FtpServerManager {
 	private void addUser(FtpServerFactory ftpServerFactory) throws IOException, FtpException {
 		
         PropertiesUserManagerFactory propertiesUserManagerFactory = new PropertiesUserManagerFactory();
-        propertiesUserManagerFactory.setPasswordEncryptor(saltedPasswordEncryptor);
+        propertiesUserManagerFactory.setPasswordEncryptor(passwordEncryptor);
         
         BaseUser user = new BaseUser();
         user.setName("yimdo");
-        user.setPassword(saltedPasswordEncryptor.encrypt("yimdo"));
+        user.setPassword(passwordEncryptor.encrypt("yimdo"));
         user.setHomeDirectory("/opt/Yimdo/ftp");
         user.setAuthorities(Arrays.asList(new WritePermission()));
         
@@ -86,4 +84,22 @@ public class FtpServerManager {
         
         ftpServerFactory.setUserManager(userManager);
 	}
+	
+    public void closeServer() {
+    	log.debug("FTP 서버 종료.");
+    	
+    	if (ftpServer == null) {
+    		
+    		log.debug("시작된 FTP 서버가 없습니다.");
+    		return;
+    	}
+    	
+    	if (ftpServer.isStopped()) {
+    		
+    		log.debug("FTP 서버가 이미 종료되었습니다.");
+    		return;
+    	}
+    	
+    	ftpServer.stop();
+    }
 }
